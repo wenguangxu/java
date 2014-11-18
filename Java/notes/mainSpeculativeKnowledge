@@ -1,0 +1,1062 @@
+一、Java语言基础
+	1.1、java语言特点
+		特点：1、强类型
+			  2、编译和解释
+			  3、自动无用内存回收功能(garbage conllector)
+			  4、面向对象(封装性、继承性和多态性)
+			  5、与平台无关
+			  6、安全性(设计的安全防范、运行安全检查)
+			  7、分布式计算
+			  8、多线程
+	1.2、 Java 应用程序和小应用程序(applet)
+		Java 源程序命名受严格的限制。Java 源文件的扩展名必须是“.java”如果源文件中有多个类，那么只能有一个
+			public 类；如果源文件中有public 类，那么源文件的名字必须与这个类的名字完全相同。
+		如果源文件没有public 类，那么源文件的名字只要和某个类的名字相同即可。
+	1.3 Java 程序的开发过程
+			对于Java 应用程序，先编写Java 源程序，源程序经Java 编译器编译后产生码文件，最后由Java 解释器解释执行字节码文件。
+			对于小应用程序，先编写源程序，然后经Java 编译器编译后，产生字节码文件，最后由Web 浏览器解释执行字节码文件。
+			(1) 子目录 d:\java\bin,这个子目录是Java JDK 的核心，其中最主要的可执行文件有：
+				1) javac---编译器
+				2) java---解释器
+				3) jdb---调试器
+				4) appletviewer---java Applet 解释器
+				
+			(2) JDK编译器的选项(javac)
+				-classpath<路径>  引用类的路径表
+				-d<目录>  		  编译后类文件存放的目录
+				-g                生成调试信息表
+				-ng               不生成调试信息表
+				-nowarn           关闭编译器警告功能
+				-o                优化类文件
+				-verbose          显示编译过程中的详细信息
+				-help             用于显示所有可能的选项
+	1.4、 标识符和关键字
+		1、字符集
+			Java 语言使用Unicode 字符集，共有65535 个字符，包括：
+			(1) 数字符 10 个(0~9)。
+			(2) 英文字母大、小写字符各26 个(A~Z 和a~z)。
+			(3) 下划线字符，美元符号。
+			(4) 文字字符，(汉字，日文片假名、平假名和朝鲜文字等)。
+			(5) 其他用于构成特殊符号的字符集。
+		2、标识符
+			标识符用于命名程序对象。例如，类名、变量名、方法名等。Java 语言的标识符可以按以下规则任意命名：
+				(1) 由字母(包括英文字母、下划线字符、美元字符、文字字符)和数字字符组成。
+				(2) 限定标识符的第一个字符不能是数字符。
+				除了按上述规则命名的习惯约定：
+					一般变量名、方法名用小写英文字母开头；文字和常数用大写字母命名；类名首字母用大写字母；包名全部用小写字母。
+		3、关键字
+			关键字的作用有以下多个方面：
+				描述程序结构、声明类、定义类的成员、简单数据类型、值和变量、异常情况处理、实例(对象)的创建和检验、流程控制等。
+				Java 语言中所有关键字均由小写字母组成。每个关键字在程序中出现有特定位置和使用方法的要求。
+				关键字不可以用做变量、方法、类或标号的标识符(名字)。
+	1.5、基本数据类型
+		数据类型可分为基本数据类型和非基本数据类型两大类。
+		基本数据类型也称为原始数据类型，是系统预先规定的一些常用类型，它们是整数类型、浮点数(实数)类型、字符(文字)类型、逻辑类型(布尔型)。
+		非基本数据类型也称为复合数据类型，是由基本类型组合的新类型。非基本数据类型分为：数组、字符串、类、接口。
+		1.5.1、逻辑类型(布尔型)
+			boolean true false
+			逻辑变量用于记录某种条件成立与否，也用语句中作条件判断。
+		1.5.2、字符类型
+			char 分为普通字符和转义字符
+			用单引号括住一个字符，表示一个普通字符常量。例如，'a'、'B'、'$'、'国'。
+			对于被语言用作特定意义的字符，或者不能显式显示的字符，需用转义字符标记它们。
+			转义字符及其含义:
+				转义符 	含义
+				\b 		退格(Backspace 键)
+				\n 		换行符，光标位置移到下一行首
+				\r 		回车符，光标位置移到当前行首
+				\t 		水平制表符(Tab 键)
+				\v 		竖向退格符
+				\f 		走纸换页
+				\\ 		反斜杠符\
+				\’ 	单引号符’
+				\” 	双引号符”
+				\nnnn 	为8 进制数字，用八进制数据表示字符的代码
+				\unnnnn 为16 进制数字，用16 进制数据表示字符的代码
+		1.5.3、整数类型
+			Java 语言将整型数据按数值范围大水不同分成四种：
+			(1) 基本型：用int 标识。4 个字节，32 位，取值范围是-2的31方~2的31方 -1，即-2147483648~2147483647。
+			(2) 字节型：用byte 标识。1 个字节，8 位，取值范围是-2的7方~2的7方 -1，即-128~127。
+			(3) 短整型：用short 标识。2 个字节，16 位，取值范围是-2的16方~2的16方 -1，即-23768~32767
+			(4) 长整型：用long 标识。8 个字节，64 位，取值范围是-2的64方~2的64方 -1，即-923372036854775808L~923372036854775807L
+		1.5.3、浮点数类型
+			浮点数类型也称实型，浮点数是带小数点或指数的数值数据。 Java 语言的浮点数有单精度和双精度两种。
+			(1)：单精度型
+				单精度型用float标识，占4个字节，32位，取值-10的38方~10的38方。float 型常是的书写的方法是在实数之后加上字母F或f.例如：23.54f,12389.987F。
+			(2)：双精度型
+				双精度型用double标识，占8个字节，64位，取值-10的308方~10的308方。double型常是的书写的方法有两种：
+				一种是直接写一个实数，或在实数后面加上字母D或d.例如：123.5439、123.5439D, 123.5439d。
+				另一种是科学计数法，用10的方幂表示(用字符e或E表示幂底10)。例如：123.24e40(科学计数法表示，值为123.24 乘10 的40 次方)。
+二、运算和语句
+	1、数据运算
+		在高级语言中，运算由表达式表示。表达式由运算符和运算分量组成，运算分量可以是常量、变量和方法调用。
+		Java语言的基本运算可分成以下几类：赋值运算，算术运算，自增和自减运算，关系运算，逻辑运算，条件运算和字符串连接运算等。
+		2.1.1、赋值运算
+			简单赋值运算：
+				变量 = 表达式
+				这里的类型转换是指数值数据的类型自动转换，这样的自动转换只．能．由．简单类型向复杂类型转换，不能从复杂的转换成简单的。
+				即如下所示的从左到右转换：
+				byte->short->int->long->float->double
+				Java 语言约定赋值运算也有值，它的值就是赋予变量的值，因此，赋值运算的结果可以继续赋值。例如：
+				int j;
+				double y=2.0;
+				y=j=3;//j 的值为3，,y 的值为3.0
+				赋值运算符结合性“自右至左”，当连续有多上赋值运算时，是从右至左逐个赋值。
+			复合赋值运算
+				在程序中，经常遇到在变量现在值的基础上作某种修正的运算。例如
+				x=x+5
+				这类运算的特点是：变量既要参与运算，又要接受赋值。为避免对同一个变量的地址重复计算，引入复合赋值运算符。常用的复合赋值运算符有：
+				+=、-=、*=、/=、%=
+		2.1.2、算术运算
+			算术运算要求运算分量的类型是数值类型的(整数类型和浮点数类型)。运算时，只需一个运算分量的是单目运算，需两个运算分量的是双目运算。算术运算的运算符是：
+			单目算术运算符：＋（取正）、－（取负）
+			双目算术运算符：＋（加）、－（减）、＊（乘）、/（除）、％（求余数）
+			说明：
+			（1） 加、减、乘、除和求余数运算都是双目运算符，结合性都是从左至右。取正和取负是单目运算符，结合性是从
+			右至左，其优先级高于＋、－、＊，％等双目运算符。
+			（2） “/”为除法运算符，当除数和被除数均为整数类型数据时，则结果也是整数类型数据。例如７/4 的结果为１。
+			（3） “％”为求余数运算符，求余数运算所得结果的符号与被除的符号相同。例如：５％３的结果为２，－５％３
+			的结果为－２，５％－３的结果为２。
+		2.1.3、自增和自减运算
+			++i 前缀形式，表示在引用变量i 之前，先使i 加１，以加１后的i 值为运算结果。
+			--i 前缀形式, 表示在引用变量i 之前, 先使i 减１，以减１后的i 值为运算结果。
+			i++后缀形式，表示在收用变量i 之后，才使i 加１，即以增１前的i 值为运算结果。
+			i--后缀形式，表示在引用变量i 之后，才使i 减１，即以减１前的i 值为运算结果。
+			自增自减运算能使程序更为简洁和高效，但在使用时需注意“＋＋”和“――”运算的运算只能是变量，不能是常量或表达式。
+			例如，４++或（i+j）++都不是合法的。
+		2.1.4、关系运算
+			关系运算用来表达两个表达式值的比较，运算结果是布尔型。有６上关系运算符：
+			＜（小于）、＜＝（小于等于）、＞（大于）、＞＝（大于等于）、＝＝（等于）、！＝（不等于）
+			关系运算对左右两侧的值进行比较，如果比较运算的结果成立，则值为true；不成立为false.
+			上述６个关系运算符的优先级不完全相同。＜、＜＝、＞、＞＝的优先级高于＝＝，！＝。
+			例如，表达式x>y==c<d,等价于(x>y)==(c<d)。该表达式的意义是x>y 与c<d,或同时成立或同时不成立。
+			关系运算符的优先级低于算术运算符的优先级。
+			例如：x>u+v,等价于x>(u+v).
+			关系运算符的结合方向是自左至右。
+		2.1.5、逻辑运算
+			逻辑运算用于描述逻辑表达式，实现连续多个条件的逻辑与、逻辑或、逻辑否定的判定。有３个逻辑运算符：＆＆（逻辑与）、||（逻辑或）、！（逻辑否定）
+			（１） 对表达式a&&b,当a 为false 时，结果为false，不必再计算b；仅当a 为true 时，才需计算b。
+			（２） 对表达式a||b，当a 为true 是，结果为true，不心再计算b;仅当a 为false 时，才需计算 b。
+		2.1.6、条件运算
+			条件运算是一个三目运算，一般形式如下：
+			逻辑表达式？表达式１：表达式２
+			条件运算的执行过程是：
+			（1） 计算逻辑表达式
+			（2） 如果逻辑表达式的值为true，则计算表达式１，并以表达式１的值为条件运算的结果（不再计算表达式２）
+			（3） 如果逻辑表达式的为false,则计算表达式２，并以表达式２的值为条件运算的结果（未计算表达式１）。
+	2、语句
+		在java语言中，语句分为基本语句、控制结构语句以及package语句和import语句等。其中控制结构语句包括复合语句、if语句、switch语句、循环语句、try...catch语句。
+		其中循环语句有while语句、do...while语句、for语句三种。
+			2.2.1、基本语句
+				表达式语句、空语句、break 语句、continue 语句、return 语句等。基本语句都以分号为结束符。
+				(1)、表达式语句
+					k=k+2;  m=n=j=3;
+				(2)、空语句
+					空语句是只有一个分号的语句，其形式为
+						；
+					实际上，空语句是什么也不做的语句。语言引入空语句是出于以下实用上的考虑。例如，循环控制结构的句法需要
+					一个语句作为循环体，当要循环执行的动作由循环控制部分完成时，就不需要有一个实际意义的循环体，这时就需
+					要用一个空语句作为循环体。另外，语言引入空语句使语句序列中连续出现多个分号不再是一种错误，编译系统遇
+					到这种情况，就认为单独的分号是空语句。
+				(3)、break语句
+				(4)、continue语句
+					continue 语句提早结束当前轮次循环，进入下一轮次循环
+				(5)、return语句
+					return 语句只能出现在方法体中，return 语句的执行将结束方法的执行，将控制返回到方法调用处。return 语句有两种形式：
+					return ; 或 return 表达式；
+					第一种形式只有用于不返回结果的方法体中，第二种形式用于有返回结果的方法体中。执行第二种形式的return 语句时，方法在返回前先计算return 后的表达式，并以该表达式值作为方法返回值，带回到方法调用处继续计算。
+			2.2.2、复合语句
+			2.2.3、if语句
+			2.2.4、switch语句
+				表达式的值的类型只能是char,byte short int 类型。
+				switch(表达式){
+					case 常量表达式1：语句序列1;break;
+					case 常量表达式2：语句序列 2;break;
+					case 常量表达式 n: 语句序列 n;break;
+					default: 语句序列 n+1;break;
+				}
+			2.2.5、try...catch语句
+				try{
+					语句块//执行该语句块，可能会发生异常
+				}catch(异常类型 e){
+					异常发生时要执行的语句；
+				}finally{
+					无论异常发生与否，都要执行的语句。
+				}
+				一个try 可以有多个catch 和它标识的语句块。
+				catch 的内容可以为空，但是{}不可省。
+			2.2.6、while语句
+			2.2.7、do...while语句
+			2.2.8、for语句
+			2.2.9、嵌套的循环结构
+			2.2.10、循环体内的continue和break语句
+			2.2.11、package语句
+				package 包名;
+				package 语句必须出现在源程序文件的起始行，表示出现在该文件中的所有类都属于这个程序包。
+				如果 源程序文件的首行没有package 语句，则被默认为是无名包，存于当前目录中。
+			2.2.12、import语句
+				import 语句用于引入所需要的类。import 语句的格式为：
+				import 包名.类名；
+				如果要从一个包中引入多个类，则可以用通配符“* ”。
+				在一个Java 源程序中可以有多个import 语句，它们必须出现在package 之后，类的定义之前。
+			2．2．13 java 应用程序的基本结构
+				[package 包名；]
+				import 包名.类名；
+				…
+				[public] class 类名{
+					int val= …
+					public static void main(String args[])
+					{
+						…
+					}
+				}
+三、面向对象编程基础
+	3.1、面向对象的基本概念
+		自计算机诞生到现在，程序设计语言发展经历了面向机器、面向过程和面向对象３个阶段。
+		面向机器：程序＝数据＋指令
+		面向过程：程序＝数据结构＋算法
+		面向对象：程序＝对象＋消息
+		1.1、抽象
+			抽象（abstraction）是程序设计中最经常使用的技术之一，因为抽象是有效控制程序复杂性的重要手段。
+			在面向对象阶段，利用抽象按类设计。类是目前支持抽象的最好工具。
+		1.2、对象
+			的对象都有状态、行为和名称。
+			对象的名称用于程序引用对象，对象的成员变量，用于存储对象的状态信息，对象的方法用于描述对象的行为。
+		1.3、消息
+			在程序系统中，对象之间的交互通过相互发送消息（Message）实现。
+		1.4、类
+			把同一类对象的所有共同的属性和行为放在一起描述。这种声明对象共有属性和行为的机制称为类。
+			类概括了同类对象的共有性质：数据和方法。类的每个对象都有自己的标识，但它们具有相同的一组属性和提供相同的一组方法。
+		1.5、继承
+			继承（Inheritance）就是在已有类基础上，扩充属性，或扩充与改写其某些方法，生成新的类，这个方式称为继承。
+			继承具有传递性。
+			超类声明定义共同的特性，子类继承超类的共有特性，还可增加某些特殊性，并可扩充和修正部分行为。
+		1.6、多态性
+			多态性（Polymorphism）有多种表现形式，这里所说的多态性是指类型适应性多态性，这来自继承，不同继承层次的对象对同样的方法有不同的实现。类型适应性多态性要求自动按对象的实际类型正确调用它的方法。
+		1.7、this
+			方法中使用，指当前对象的引用。
+		1.8、static
+			static修饰成员变量，这个变量是所有对象共享。
+			static修饰的方法，不能访问非静态方法。
+	3.2、 Java 的类和对象
+		对象的销毁：由于java 系统内设废弃内存回收程序，所以一般情况下，一个对象使用结束后，程序不必特别通知系统撤销对象。但有时为提高系统资源的利用率，程序也可通过调用方法finalize()显式通知系统，请求系统撤销对象。
+	3.3、接口
+		接口有常量定义和方法定义，但没有方法的实现代码。
+		接口 的所有变量都默认为final static 属性；所有的方法都默认为是public abstract 属性。
+		如果一个类要实现某个接口，那么这个类必须实现该接口的所有方法，为这些方法实现的方法体。在实现接口的方法时，方法的名字、返回值类型、参数个数及类型必须与接口中的定义的方法完全一致，并一定要用public修饰。
+	3.4、基本类
+	3.5、Java 小应用程序基础
+		小应用程序的主要功能是显示图形、动画、播放声音、响应用户事件等。每个小应用程序都继承java.applet.Applet 类。
+		如果小应用程序已用import java.applet.Applet 导入系统的Applet 类，小应用程序的主类必须按以下形式声明：
+			public class 主类名 extends Applet
+		如果没有用import 导入系统Applet 类，则主类的声明应写成：
+			public 类名 extends java.applet.Applet
+		为了系统的安全，对小应用程序有一定限制:不能调用本地的应用程序和运行时的动态连接库；不能访问本地文件，如读、写文件；除原小应用程序所在的位置(站点)外，不能再做网络连接与WWW 建立联系，不能获得任何有关系统设置的信息。
+		3.5.1、小应用程序的建立和运行
+			(1) 用Java 语言编写小应用程序的源程序。
+			(2) 把小应用程序的源程序编译成字节码.class 文件。
+			(3) 将小应用程序的字节码文件嵌入在Web 页中，设计一个指定小应用程序的HTML 文件.html。以下是启动小应用程序的HTML 文件结构：
+				<HTML>
+					<HEAD>
+						<TITLE>String named by Programmer </TITLE>
+					</HEAD>
+					<BODY>
+						<APPLET>
+							[CODE BASE =Applet 的路径]
+							CODE = Applet 的字节码文件名
+							WIDTH = Applet 在Web 页中的宽度
+							HEIGHT = Applet 在Web 页中的高度
+							[<PARAM NAME =参数名 VALUE= 参数值>]
+							[<!注释>][可选的辅助文本]
+						</APPLET>
+					</BODY>
+				</HTML>
+			(4) 在支持Java 的浏览器上运行。
+		3.5.2、Applet 类的基本方法
+			(1)init()方法
+				初始化，由浏览器载入内存时调用 init()方法，该方法只运行一次。其用途是创建所需要的对象、设置初始状态、装载力图像、设置参数等。
+			(2)start()方法
+				初始化后，紧接着调用start()方法、启动小应用程序主线程，或当用户从小应用程序所在的Web 页面转到其他页面，
+				然后又返回该页面时，start()方法将再次被调用 。
+			(3)stop()方法
+				当浏览器离开小应用程序所在的页面转到其他页面时，调用stop()方法，挂起小应用程序的执行。
+			(4)destroy()方法
+				当关闭浏览器时，系统调用destroy()方法，结束小应用程序的生命，关闭线程释放对象资源。
+			(5) paint(Graphics g)方法
+				该方法用于在屏幕窗口上显示某些信息。如文字、色彩、背景和图像等。当小应用程序启动时，浏览器产生一个Graphics
+				类的对象，供小应用程序使用，并以参数g 传递给方法paint()。小应用程序可以把g 理解为一支画笔。
+				小应用程序主类的程序结构如下：
+				public class AppletName extends java.applet.Applet{
+				public void init(){…}
+				pulic void start(){…}
+				public void stop(){…}
+				public void destroy(){…}
+				public void paint(Graphics g){…}
+				…
+				}
+			(6) repaint()方法
+				为在java 页面上显示动态效果，需要repaint()方法，repaint()调用update(),repaint()先清除paint()方法以前所
+				画的内容，然后再调用paint()方法。
+				在例3.20 的小应用程序中，start()方法调用repaint()方法，因此每当小程序调用start()方法时，将会导致以前用
+				paint()方法所画的内容消失，并紧接着再调用paint()方法。由于paint()方法对显示字符串的位置有修改，这样每当
+				调用start()方法时，字符串的显示位置会移动。
+			(7) update()方法
+				调用repaint()方法时，系统会自动调用update()方法。update(Graphics g)方法是从父类Applet 继承来的，该方
+				法的功能是清除paint()方法以前所画的内容，然后再调用paint()方法。小应用程序重写update()方法，可以达到
+				特定的要求。参见7.2.1 例7.3。
+		3.5.3、小应用程序的生命周期(执行过程)
+			(1)下载并实例化小应用程序，系统调用init()方法。
+			(2)启动，系统调用start()方法。
+			(3)小应用程序暂停执行，或因Browser 转向其他网页，或小应用程序调用stop()方法，或小应用程序执行paint(Graphicsg)方法
+			(4)重新启动，或重新进入小应用程序所在页面，重新激活小应用程序，或小应用程执行paint(Graphics g)方法完成。
+			(5)终止，或退出浏览器，或执行destroy()消亡方法。
+				当浏览器打开超文本文件，例如 Example3_20.html,发现有APPLET 标记时，就创建主类Example3_20 对象，该对象是小
+				应用程序主类的实例，具体表现是一个视窗。视窗是一个容器，它的大小由超文本中的width 和height 来确定，参见第
+				5 章。
+				
+		3.5.4、小应用程序数据输入输出
+			小应用程序的数据输入有多种方式。从图形界面的文本框、文本区输入；也可以采用系统标准输入；还可以由HTML 文件中的参数导入。
+			这里只小应用程序从它的HTML 文件导入 参数的方法。设小应用程序有以下成员变量定义：
+				int sleepTime;String filename;
+			该小应用程序的HTML 文件 用以下形式的代码指定小应用程序主类成员变量sleepTime 与fileName 的值：
+				<PARAM NAME = “sleepTime” VALUE= “1000”>
+				<PARAM NAME = “filename” VALUE = “mypic.jpg”>
+			小应用程序在init()方法中可帮以下代码读取上述两个成员变量的值：
+				String s = getParameter(“sleeptime”);
+				sletpTime = Integer.parseInt(s);
+				fineName = getParameter(“filename”);
+			小应用程序在窗口中输出数据，需要重新设计paint()方法。该方法主要调用 drawstring()方法。调用drawString()方法的格式如下：
+				g.drawString(string,xPos,yPos);
+			参数string 是要输出的字符串，xPos 和yPos 是字符串在输出窗口的像素坐标。
+四、数组和字符串
+	4.1、数组
+		数组是将一组相同类型的数据顺序存储，组成一种复合数据类型。
+		数组有一维数组和多维数组之分，数组元素的下标个数确定数组的维数。
+			4.1.1、一维数组
+				数组元素只有一个下标的数组是一维数组。
+				创建一维数组的方法有３种：
+				（1） 先声明后创建
+				创建数组代码的一般形式为
+				数组名字 ＝ new 数组元素类型[元素个数];
+				例如，代码：
+				int intArray [];
+				intArray = new int[5];
+				（2） 声明时创建
+				把声明数组和创建数组的代码结合在一起。例如，代码：
+				int intArray[] = new int[5];
+				（3） 直接赋值创建
+				在声明数组时，直接给出数组的初值。例如代码：
+				int [] intArray = {1,2,3,4,5};
+				直接赋值创建数组的方法也称为数组初始化。在数组初始化的代码中，花括号{}，内初值间的分隔符是逗号”,”。
+				系统根据数组初始化时，提供的初值个数确定数组的元素个数，然后为数组分配空间，并为数组各元素依次赋初值。
+				上述代码相当于：
+				int intArray[] = new int[5];
+				intArray[0]=1; intArray[1]=2; intArray[2]=3; intArray[3]=4; intArray[4]=5;
+				前两种方法创建数组时，系统会给数组元素提供默认初始值：数值型数组元素的默认值是０；char 类型数组元
+				素的默认值是全０代码字符；布尔类型数组元素的默认值是false。
+				在Java 中，所有数组都有一个成员length，程序可以访问它，获得数组的元素个数，但不能改变它。例如，
+				按照前面数组intArray 的定义，intArray.length 的值是５。
+				2、引用一维数组
+					引用一维数组元素代码的一般形式为
+					数组名[下标]
+					数组下标可以是整型常数，或者是整型表达式。例如：intArray[3]=25;
+					数组下标范围是0到数组.length-1。
+					为了确保程序安全性，Java运行系统对数组下标自动进行范围越界检查。如果发现下标越界，系统将发生异常。
+				3、数组是一种引用类型。
+					数组也是一种引用类型，一个数组名在不同时间可引用不同数组。如：
+					myArray = firstArray;
+					myArray = secondArray;
+			4.1.2、多维数组
+				数组元素有多个下标的数组就是多维数组。多维数组是一种数组的数组，例如，当数组的元素又是一维数组时，就是一个二维数组。在Java 程序中，可以有三维数组，或四维数组等。
+				1、声明二维数组
+					声明二维数组的一般形式有以下３种：
+					类型 数组名 [ ][ ]
+					类型 [ ][ ] 数组名
+					类型 [ ] 数组名 [ ]
+					类似的代码可以声明多维数组。
+				2． 创建二维数组
+					创建二维数组对象的方法有多种：
+					（1） 直接分配（平衡二维数组――矩阵）
+					类型 数组名[][]=new 类型[长度１][长度２]
+					例如，以下代码创建一个３行３列的矩阵：
+					int myTowArray[][]= new int[3][3];
+					（2） 从最高维开始，分别对每一维分配不等长的空间（非平衡数组）
+					以二维数组为例，先指定第一维，创建有指定子数组个数的二维数组然后，依次对每个子数组确定元素个数，并创建子
+					数组。例如，以下代码创建一个二维数组a[][]，它有３个子数组，第一个子数组有４个元素，第２个子数组有５个元
+					素，第３个子数组有２个元素：
+					int a[][] = new int[3][];
+					a[0]= new int [4];
+					a[1]=new int[5];
+					a[2]=new int[2];
+					（3） 直接赋值创建
+					声明二维数组，同时直接给出各子数组的元素。如果子数组的元素个数不同，则创建是一个非平衡的二维数组。例如，
+					代码：
+					int [][]x = {{5,6,7},
+					{8,9,10,11},
+					{18,19,20,15},
+					{2,9}
+					};
+				3． 引用二维数组
+					二维数组元素的引用方式是：
+					数组名[下标１][下标２]
+					其中下标１是第一维下标，下标２是第二维下标。例如，对上述二维数组x,x[0][1]是６，x[2][3]是15。
+				4． 使用二维数组要注意的问题
+					对于二维数组，要注意以下两点：
+					（１） 二维数组名，length 和二维数组名[下标１].length 的区别。二维数组名.length 是二维数组的子数组个数；二
+					维数组名[下标１].length 是指定子数组的元素个数。
+					（２） 二维数组名[下标]是一维数组。
+	4.2、字符串
+		Java 语言提供两个用于处理字符串的类：String 类用于处理不可变的字符串。StringBuffer 类用于处理可改变的字符串。
+		4.2.1、字符串常量
+			字符串常量是用双引号括起来的一个字符串。在Java语言中，字符串常量是匿名的String 对象。
+		4.2.2、字符串声明和创建
+			利用String 类的构造方法可以创建字符串对象，String 类的构造方法有：
+			（1） String()，创建一个空字符串对象
+			例如：
+			s = new String();
+			（2） String(String str)，根据给定的字符串str 创建字符串对象
+			例如，利用字符串常量创建字符串：
+			s = new String(“I am a student.”);
+			或简写成：
+			s = “I am a student.”;
+			字符串声明和创建也可一起完成：
+			Sting s = new String(“I am a student.”);
+			以下代码用字符串对象创建新字符串：
+			String newStr = new String(s);
+			以上代码使字符串newStr 与字符串s 的内容相同，但是，它们是两个字符串。
+			（3） String(char a[])，根据字符数组a 创建一个字符串。
+			例如，代码：
+			char charArray[4] = {‘g’,’I’,’r’,’l’};
+			String str = new String(charArray);
+			所生成的字符串内容是”girl”。
+			（4） String (char a[], int startIndex, int charNum)，根据字符数组的起始下标位置以及字符个数创建字符串。
+			例如，以下代码输出3456。
+			char a[] = {‘1’,’2’,’3’,’4’,’5’,’6’,’7’};
+			String s = new String (a,2,4);
+			System.out.println(s);
+		4.2.3、字符串基本操作
+			1、字符串连接( + 或concat())
+				字符串有一个连接运算符＋，得到连接两个字符串的结果；一个连接方法concat（String s），实现复制参数s字符串的内容，连接在字符串对象之后，得到一新的字符串。
+			2、获取字符串长度length()
+				字符串常量也可以使用length()方法获得长度。例如：”我是好学生”.length()的值是５。
+			3、字符串前缀或后缀的比较
+				用boolean startsWith(String s)方法判断一个字符串的前缀是否为字符串s，用boolean endsWith(String s)方法判断一个字符串的后缀是否为字符串s。
+			4、比较两个字符串是否相同
+				用boolean equals(String s)方法比较某字符串是否与字符串s 相同。
+				注意两字符串比较与两个字符串引用对象比较的区别。比如，表达式str1.equals(str2)与表达式str1==str2 的差异。前者表示所引用的两个字符串的内容是否相同，后者表示str1 与str2 是否引用同一个对象。
+				用boolean equalsIgnoreCase(String s)方法，忽略大小写比较某字符串是否与字符串s 相同。
+				用int compareTo(String another)方法按字典顺序与参数another 字符串比较大小。
+				。代码s1.compareTo(s2)，如果s1 和s2 相同，方法返回值0；如果s1 大于s2，方法返回正值；如果s1 小于s2，方法返回负值。
+				用int compareToIgnoreCase(String another)方法，忽略大小写，按字典顺序与参数another 字符串比较大小。
+			5、字符串检索
+				int indexOf(String s)或int indexOf(String s,int startpoint)实现字符串检索。前一个方法是从指定字符串的头开始检索参数字符串s，返回字符串s 首次出现的位置。后一个方法则在指定字符串中从某个位置开始检索参数字符串s,返回字符串s 首次出现的位置。如果没有检索到。则返回-1。
+			6、取字符串的子串
+				String substring(int startpoint);
+				String substring(int startpoint, int end);
+				其中startpoint 是字符串的开始下标，end 是截止下标。子串是从开始下标开始，至截止下标的前一个下标为止范围内
+				的子串。
+			7、替换字符串的某字符得到一个新字符串
+				String replace(char oldChar,char newChar)
+				用参数newChar 指定的字符替换s 中由oldChar 指定的所有字符，产生一个新的字符串。
+			8、去掉前后空格得到一个新字符串
+				方法trim()可以去掉字符串的前后空格。
+			9、基本类型值的字符串表示
+				例如，设有double 类型变量d，boolean 类型变量b，代码：
+				String dStr = String.valueOf(d);
+				String bStr = String.valueOf(b);
+				分别将数值和逻辑值转换成字符串。
+			10、字符串得到基本类型对象
+				Double dObj = Double.valueOf(“1234.567”);
+				将字符串转换成Double 类的对象。类似地，可以将字符串转换到其他基本类对象。
+			11、字符串得到基本类型值
+				字符串转化为int 类型值用Integer.parseInt(String s)方法。例如：
+				int x;String s = “6542”;x= Integer.parseInt(s);
+				字符串转化为long 类型值用Long.parseLong(String s)方法。例如：
+				long x;String s =”46046542”;x = Long.parseLong(s);
+				字符串转化为float 类型值用Float.parseFloat(String s)方法。例如：
+				float f = Float.parseFloat(“12.35”)，使f 的值为12.35。
+				字符串转化double 类型用代码Double.parseDouble(String s)方法。例如：
+				double d = Double.parseDouble (“12.35”)，使f 的值为12.35。
+		4.2.4、StringTokenizer类(和String的split()相似)
+			java.util 包中的类StringTokenizer 用于语言符号（单词）的分析。
+		4.2.5、字符串与字节数组
+			(1) String (byte[]b)
+			(2) String(byte []b,int offset,int length)
+			String 也提供实例方法getBytes():
+			byte [] getBytes(),使用默认字节字符对应表将字符串转化为字节数组。
+		4.2.6、对象的字符串表示
+			toString() 对象通过调用该方法可以获得该对象的字符串表示。
+第五章、图形界面设计(一)
+	5．1 图形界面设计基础
+		5．1．1 AWT 和Swing
+			Swing 可以看作是AWT 的改良版，而不是代替AWT，是对AWT 的提高和扩展。所以，在写GUI 程序时，Swing 和AWT 都要作用。它们共存于Java基础类(Java Foundation Class,JFC)中。
+			使用Swing 设计图形界面，主要引入两个包：
+			javax.swing 包含Swing 的基本类；java.awt.event 包含与处理事件相关的接口和类。
+		5．1．2 组件和容器
+			组件(component)是图形界面的基本元素，用户可以直接操作，例如按钮。容器(Container)是图形界面的的复合元素，容器可以包含组件，例如面板。
+			Component、Container 和Graphics 类是AWT 库中的关键类，其中Graphics 类将在第7 章中介绍。为能层次地构造复杂的图形界面，容器被当作特殊的组件，可以把容器放入另一个容器中。
+		5．1．3 事件驱动程序设计基础
+			1．事件、监视器和监视器注册
+				对事件作监视的对象称为监视器，监视器提供响应事件的处理方法。为了让监视器与事件对象关联起来，需要对事件对象作监视器注册，告诉系统事件对象的监视器。
+			2．实现事件处理的途征
+				java 语言编写事件处理程序主要有两种方案；一个是程序重设handleEvent(Eventevt),采用这个方案的程序工作量稍大一些。
+				另一个方案是程序实现一些系统设定的接口。java 按事件类型提供多种接口，作为监视器对象的类需要实现相应的接口，即实
+				现响应事件的方法。当事件发生时，系统内设的handleEvent(Event evt)方法就自动调用监视器的类实现的响应事件的方法。
+				java.awt.event 包中用来检测并对事件做出反应的模型包括以下三个组成元素：
+				(1) 源对象：事件“发生”这个组件上，它与一组“侦听”该事件的对象保持着联系。
+				(2) 监视器对象：一个实现预定义的接口的类的一个对象，该对象的类要提供对发生的事件作处理的方法。
+				(3) 事件对象：它包含描述当事件发生时从源传递给监视器的特定事件的信息。
+			3．事件类型和监视器接口
+				组件和事件类型表：
+					事件类型                               组件                                                                                                                                                                 描述
+					ActionEvent      JButton,JCheckBox,JComboBox,JMenuItem,JRadioButton       点击、选项或选择
+					ChangeEvent      JSlider 											                  调整一个可移动元素的位置
+					AdjustmentEvent  JScrollBar                                               调整滑块位置
+					ItemEvent        JComboBox,JCheckBox,JRadioButton,JRadioButtonMenuItem    从一组可选方案中选择一个项	目
+									 JCheckBoxMenuItem
+					ListSelectionEvent JList                                                  选项事件
+					KeyEvent         JComponent及其派生类                                                                                                                    操纵鼠标或键盘
+					MouseEvent
+					CareEvent        JTextArea,JTextField                                     选择和编辑文本
+					WindowEvent      Window 及其派生类JFrame                                    对窗口打开、关闭和图标化
+				每个事件类型都有一个相应的监视器接口，表5-2 列出了每个接口的方法。实现监视器接口的类必须实现所有定义在接口中的方法。
+				监视器接口方法:
+				监视器接口                                                                                                                          方法                                                                                                                获取事件源的方法
+				ActionListener             actionPerformed                                          getSource,getActionCommand
+				ChangeListener             stateChanged                                             getSource
+				AdjustmentListener         adjustmentValueChanged                                   getAdjustable
+				FocusListener              focusGained,focusLost
+				ItemListener               itemStateChanged getItemSelectable(),getSource()
+				ListSelectionListener      valueChanged e.getSource().getSelectedValue()
+				KeyListener                keyPressed,keyReleased,keyTyped
+				CareListener               careUpdate
+				MouseListener              mouseClicked,mouseEntered,mouseExited,mousePressed,mouseReleased
+				MouseMontionListener       mouseDragged,mouseMoved
+				WindowListener             windowClosed,windowClosing,windowDeactivated,windowDeiconified,windowIconified,windowOpened
+	5．2 框架窗口
+		有以下三种窗口：
+			(1) Applet 窗口，Applet 类管理这个窗口，当应用程序程序启动时，由系统创建和处理。
+			(2) 框架窗口(JFrame),这是通常意义上的窗口，它支持窗口周边的框架、标题栏，以及最小化、最大化和关闭按钮。
+			(3) 一种无边框窗口(JWindow)，没有标题栏，没有框架，只是一个空的矩形。
+		JFrame 类的主要构造方法：
+			(1) JFrame(),创建无标题的窗口对象。
+			(2) JFrame(String s),创建一个标题名是字符串s 的窗口对象。
+			JFrame 类的其他常用方法：
+			(1) setBounds(int x,int y,int width,int height),参数x,y 指定窗口出现在屏幕的位置；参数width,height 指定窗口的宽	度和高度。单位是像素。
+			(2) setSize(int width,int height),设置窗口的大小，参数width 和height 指定窗口的宽度和高度，单位是像素。
+			(3) setBackground(Color c),以参数 c 设置窗口的背景颜色。
+			(4) setVisible(boolean b),参数b 设置窗口是可见或不可见。JFrame 默认是不可见的。
+			(5) pack(),用紧凑方式显示窗口。如果不使用该方法，窗口初始出现时可能看不到窗口中的组件，当用户调整窗口的大小时，可能才能看到这些组件。
+			(6) setTitle(String name),以参数name 设置窗口的名字。
+			(7) getTitle()，获取窗口的名字。
+			(8) setResiable(boolean m),设置当前窗口是否可调整大小(默认可调整大小)。
+		Swing 里的容器都可以添加组件，除了JPanel 及其子类(JApplet)之外，其他的Swing 容器不允许把组件直接加入。其他容器添加组件有两种方法：
+			一种是用getContentPane()方法获得内容面板，再将组件加入。例如，例5.1 程序中的代码：
+			mw.getContentPane().add(button);
+			该代码的意义是获得容器的内容面板，并将按钮button 添加到这个内容面板中。
+			另一种是建立一个JPanel 对象的中间容器，把组件添加到这个容器中，再用setContentPane()把这个容器置为内容面板。
+			例如，代码：
+			JPanel contentPane = new JPanel();
+			mw.setContentPane(contentPane);
+		用Swing 编写GUI 程序时，通常不直接用JFrame 创建窗口对象，而用JFrame 派生的子类创建窗口对象，在子类中可以加入窗口的特定要求和特别的内容等。
+		Color 类中定义的常用颜色:
+			static Color black 黑色。
+			static Color BLACK 黑色。
+			static Color blue 蓝色。
+			static Color BLUE 蓝色。
+			static Color cyan 青色。
+			static Color CYAN 青色。
+			static Color DARK_GRAY 深灰色。
+			static Color darkGray 深灰色。
+			static Color gray 灰色。
+			static Color GRAY 灰色。
+			static Color green 绿色。
+			static Color GREEN 绿色。
+			static Color LIGHTGRAY 浅灰色。
+			static Color lightGray 浅灰色。
+			static Color magenta 洋红色。
+			static Color MAGENTA 洋红色。
+			static Color orange 桔黄色。
+			static Color ORANGE 桔黄色。
+			static Color pink 粉红色。
+			static Color PINK 粉红色。
+			static Color red 红色。
+			static Color RED 红色。
+			static Color white 白色。
+			static Color WHITE 白色。
+			static Color yellow 黄色。
+			static Color YELLOW 黄色。
+		JFrame 类的部分常用方法:
+			方法                                                                                                                                          意义
+			JFrame()                                         构造方法，创建一个JFrame 对象
+			JFrame(String title)                             创建一个以title 为标题的JFrame 对象
+			add()                                            从父类继承的方法，向窗口添加窗口元素
+			void addWindowListener(WindowListener ear)       注册监视器，监听由JFrame 对象击发的事件
+			Container getContentPane()                       返回JFrame 对象的内容面板
+			void setBackground(Color c)                      设置背景色为c
+			void setForeground(Color c)                      设置前景色为c
+			void setSize(int w,int h)                        设置窗口的宽为w,高为h
+			vid setTitle(String title)                       设置窗口中的标题
+			void setVisible(boolean b)                       设置窗口的可见性，true 可见，false 不可见
+	5．3 标签、按钮和按钮事件
+		5．3．1 标签
+			标签对象的作用是对位于其后的界面组件作说明。可以设置标签的属性，即前景色，背景色、字体等，但不能动态地编辑标签中的文本。
+			程序关于标签的基本内容有以下几个方面：
+			(1) 声明一个标签名
+			(2) 创建一个标签对象
+			(3) 将标签对象加入到某个容器。
+			JLabel 类的主要构造方法是：
+			(1) JLabel (),构造一个无显示文字的标签
+			(2) JLabel (String s),构造一个显示文字为s 的标签。
+			(3) JLabel(String s, int align),构造一个显示文字为s 的标签。align 为显示文字的水平方式，对齐方式有三种：
+			左对齐：JLabel.LEFT。中心对齐：JLabel.CENTER,右对齐：JLabel.RIGHT.
+			JLabel 类的其他常用方法是：
+			(1) setText(String s),设置标签显示文字。
+			(2) getText(),获取标签显示文字。
+			(3) setBackground(Color c)，设置标签的背景颜色，默认背景颜色是容器的背景颜色。
+			(4) setForeground(Color c),设置标签上的文字的颜色，默认颜色是黑色。
+		5.3.2 按钮
+			JButton 常用构造方法有：
+			(1) JButton(),创建一个没有标题的按钮对象。
+			(2) JButton(String s),创建一个标题为s 的按钮对象。
+			JButton 类的其他常用方法有：
+			(1) setLabel(String s)，设置按钮的标题文字。
+			(2) getLabel(),获取按钮的标题文字。
+			(3) setMnemonic(char mnemonic)，设置热键
+			(4) setToolTipText(String s),设置提示文字。
+			(5) setEnabled(boolean b),设置是否响应事件
+			(6) setRolloverEnabled(boolean b)设置是否可滚动。
+			(7) addActionListener(ActionListener aL),向按钮添加动作监视器。
+			(8) removeActionListener(ActionListener aL),移动按钮的监视器。
+			按钮处理动作事件的基本内容有以下几个方面：
+			(1) 与按钮动作事件相关的接口是ActionListener，给出实现该接口的类的定义。
+			(2) 声明一个按钮名。
+			(3) 创建一个按钮对象。
+			(4) 将按钮对象加入到某个容器。
+			(5) 为需要控制的按钮对象注册监视器，对在这个按钮上产生的事件实施监听。
+			如果是按钮对象所在的类实现监视接口，注册监视器的代码形式是
+			addActionListener(this);
+			参见例5.3。 如果是别的类A 的对象a 作为监视器，类A 必须实现ActionListener 接口，完成监视器注册需用以下形式的两
+			行代码：
+			A a = new A();//创建类A 的实例a
+			addActionListener(a);//用对象a 作为监视器对事件进行监视。
+			(6) 在实现接口ActionListener 的类中，给出处理事件的方法的定义：
+			public void actionPerformed(ActionEvent e);
+			在处理事件的方法中，用获取事件源信息的方法获得事件源信息，并判断和完成相应处理。获得事件源的方法有：方法
+			getSource()获得事件源对象；方法getActionCommand()获得事件源按钮的文字信息。
+			用鼠标点击按钮产生事件对象，将事件送达对象，这个过程称为激发事件。当一个事件被送到监视器对象时，监视器对象
+			实现的接口方法被调用，调用时系统会提供事件对象的参数。程序中虽然没有调用监视器方法的的代码，但是程序做了两
+			件事：第一，指定哪一个对象是监视器，它将响应由按钮的激发的事件，这个步骤称为监视器注册。第二，必须定义一个
+			方法，当事件送到监视器时，这个方法将被调用。程序中没有调用这个方法的代码，这个调用是系统执行的。
+	5.4 面板
+		面板有两种，一种是普通面板(JPanel)，另一种是滚动面板(JScrollPane).
+		5.4.1 JPanel
+			面板是一种通用容器，JPanel 的作用是实现界面的层次结构，在它上面放入一些组件，也可以在上面绘画，将放有
+			组件和有画的JPanel 再放入另一个容器里。JPanel 的默认布局为FlowLayout。
+			面板处理程序的基本内容有以下几个方面
+			(1) 通过继承声明JPanel 类的子类，子类中有一些组件，并在构造方法中将组件加入面板。
+			(2) 声明JPanel 子类对象。
+			(3) 创建JPanel 子类对象。
+			(4) 将JPanel 子类对象加入到某个容器。
+			JPanel 类的常用构造方法有：
+			(1) JPanel(),创建一个JPanel 对象。
+			(2) JPanel(LayoutManager layout),创建JPanel 对象时指定布局layout。
+			JPanel 对象添加组件的方法：
+			(1) add(组件)，添加组件。
+			(2) add(字符串，组件)，当面板采用GardLayout 布局时，字符串是引用添加组件的代号。
+		5.4.2 JScrollPane
+			当一个容器内放置了许多组件，而容器的显示区域不足以同时显示所有组件时，如果让容器带滚动条，通过移动滚动条的
+			滑块，容器中位置上的组件就能看到。滚动面板JScrollPane能实现这样的要求，JScrollPane是带有滚动条的面板。JScrollPane
+			是Container 类的子类，也是一种容器，但是只能添加一个组件。JScrollPane 的一般用法是先将一些组件添加到一个JPanel
+			中，然后再把这个JPanel 添加到JScrollPane 中。这样，从界面上看，在滚动面板上，好像也有多个组件。在Swing 中，像
+			JTextArea、JList、JTable 等组件都没有自带滚动条，都需要将它们放置于滚动面板，利用滚动面板的滚动条，浏览组件中的
+			内容。
+			JScrollPane 类的构造方法有：
+			(1) JScrollPane()，先创建JScrollPane 对象，然后再用方法setViewportView(Component com)为滚动面板对象放置组
+			件对象。
+			(2) JScrollPane(Component com),创建JScrollPane 对象，参数com 是要放置于JScrollPane 对象的组件对象。为
+			JScrollPane 对象指定了显示对象之后，再用add()方法将JScrollPane 对象放置于窗口中。
+			JScrollPane 对象设置滚动条的方法是：
+			(1) setHorizontalScrollBarPolicy(int policy),policy 取以下列3 个值之一：
+			JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS
+			JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEED
+			JScrollPane.HORIZONTAL_SCROLLBAR_NEVER
+			(2) setVerticalScrollBarPolicy(int policy), policy 取以下列3 个值之一：
+			JScrollPane.VERTICAL_SCROLLBAR_ALWAYS
+			JScrollPane.VERTICAL_SCROLLBAR_AS_NEED
+			JScrollPane.VERTICAL_SCROLLBAR_NEVER
+			以下代码将文本区放置于滚动面板，滑动面板的滚动条能浏览文本区
+			JTextArea textA = new JTextArea(20,30);
+			JScrollPane jsp = new JScrollPane(TextA);
+			getContentPane().add(jsp);//将含文本区的滚动面板加入到当前窗口中。
+	5.5 布局设计
+		FlowLayout,依次放置组件。
+		BoarderLayout,将组件放置在边界上。
+		CardLayout,将组件像扑克牌一样叠放，而每次只能显示其中一个组件。
+		GridLayout,将显示区域按行、列划分成一个个相等的格子，组件依次放入这些格子中。
+		GridBagLayout,将显示区域划分成许多矩形小单元，每个组件可占用一个或多个小单元。
+		5．5.1 FlowLayout 布局 (JApplet,JPanel,JScrollPane 默认布局)
+			FlowLayout 布局是将其中的组件按照加入的先后顺序从左到右排列，一行满之后就转到一下行继续从左到右排列，每一
+			行中的组件都居中排列。这是一种最简便的布局策略，一般用于组件不多的情况，当组件较多时，容器中的组件就会显得高低
+			不平，各行长短不一。
+			FlowLayout 是小应用程序和面板默认布局，FlowLayout 布局的构造方法有：
+			(1) FlowLayout(),生成一个默认的FlowLayout 布局。默认情况下，组件居中，间隙为5 个像素。
+			(2) FlowLayout(int aligment),设定每珩的组件的对齐方式。alignment 取值可以为
+			FlowLayout.LEFT,FlowLayout.CENTER,FlowLayout.RIGHT。
+			(3) FlowLayout(int aligment,int horz, int vert),设定对齐方式，并设定组件的水平间距horz 和垂直间距vert.
+			用超类Container 的方法setLayout()为容器设定布局。例如，代码setLayout(new FlowLayout())为容器设定
+			FlowLayout 布局。将组件加入容器的方法是add(组件名)。
+		5.5.2 BorderLayout 布局(JWindow、JFrame,JDialog 的默认布局)
+			BorderLayout 布局策略是把容器内的空间简单划分为东“East”,西 “West”,南 “South”,北 “North”，中 “Center”
+			五个区域。加入组件时，都应该指明把组件放在哪一个区域中。一个位置放一个组件。如果某个位置要加入多个组件，应先将
+			要加入该位置的组件放放另一个容器中，然后再将这个容器加入到这个个位置。
+			BorderLayout 布局的构造方法有：
+			(1) BorderLayout(),生成一个默认的BorderLayout 布局。默认情况下，没有间隙。
+			(2) BorderLayout(int horz,int vert),设定组件之间的水平间距和垂直间距。
+			BorderLayout 布局策略的设定方法是setLayout(new BorderLayout())。将组件加入到容器的方法是add(组件名，位置)，
+			如果加入组件时没有指定位置，则默认为“中”位置。
+			BorderLayout 布局是JWindow、JFrame,JDialog 的默认布局。
+		5．5.3 GridLayout 布局
+			GridLayout 布局是把容器划分成若干行和列的网格状，行数和列数由程序控制，组件放在网格的小格子中。GridLayout 布局
+			的特点是组件定位比较精确。由于GridLayout 布局中每个网格具有相同形状和大小，要求放入容器的组件也应保持相同的大			小。
+			GridLayout 布局的构造方法有：
+			(1) GridLayout(),生成 一个单列的GridLayout 布局。默认情况下，无间隙。
+			(2) GridLayout(int row,int col),设定一个有行row 和列col 的GridLayout 布局。
+			(3) GridLayout(int row,int col,int horz,int vert),设定布局的行数和列数、组件的水平间距和垂直间距。
+			GridLayout 布局以行为基准，当放置的组件个数超额时，自动增加列；反之，组件太少也会自动减少列，行数不变，组
+			件按行优先顺序排列(根据组件自动增减列)。GridLayout 布局的每个网格必须填入组件，如果希望某个网格为空白，可以用一
+			个空白标签(add(new Label()))顶替。
+		5.5.4 CardLayout 布局
+			采用CardLayout 布局的容器虽可容纳多个组件，但是多个组件拥有同一个显示空间，某一时刻只能显示一个组件。就像
+			一叠扑克牌每次只能显示最上面的一张一样，这个显示的组件将占据容器的全部空间。CardLayout 布局设计步骤如下：
+			先创建CardLayout 布局对象。然后，使用setLayout()方法为容器设置布局。最的，调用容器的add()方法将组件加入容器。
+			CardLayout 布局策略加入组件的方法是：
+			add(组件代号，组件)；
+			其中组件代号是字符串，是另给的，与组件名无关。例如，以下代码为一个JPanel 容器设定CardLayout 布局：
+			CardLayout myCard = new CardLayout();//创建CardLayout 布局对象
+			JPanel p = new JPanel();//创建Panel 对象
+			p.setLayout(myCard);
+			用CardLayout 类提供的方法显示某一组件的方式有两种：
+			(1) 使用show(容器名，组件代号)形式的代码，指定某个容器中的某个组件显示。
+			例如，以下代码指定容器p 的组件代号k，显示这个组件：
+			myCard.show(p,k);
+			(2) 按组件加入容器的顺序显示组件。
+			first(容器)：例如，代码myCard.first(p);
+			last(容器)：例如 ， myCard.last(p);
+			next(容器)：例如，myCard.next(p);
+			previous(容器):myCard.previous(p);
+		5.5.5 null 布局与setBounds 方法
+			空布局就是把一个容器的布局设置为null 布局。空布局采用setBounds()方法设置组件本身的大小和在容器中的位置：
+			setBounds(int x,int y,int width,int height)
+			组件所占区域是一个矩形，参数x,y 是组件的左上角在容器中的位置坐标；参数weight,height 是组件的宽和高。
+			空布局安置组件的办法分两个步骤：先使用add()方法身容器添加组件。然后调用setBounds()方法设置组件在容器中的位置
+			和组件本身的大小。
+			与组件相关的其他方法：
+			(1) getSize().width,
+			(2) getSize().height
+			(3) setVgap(ing vgap)
+			(4) setHgap(int hgap);
+	5.6 文本框和文本区
+		在图形界面中，文本框和文本区是用于信息输入输出的组件。
+		5.6.1 文本框
+
+第七章、图形、图像与多媒体
+	７．１ 绘图基础
+		７．１．１Ｇraphics 类的基本功能
+			类Graphics 提供的功能有：建立字体、设定显示颜色、显示图像和文本，绘制和填充各种几何图形。
+		７．１．２字型和颜色
+			显示文字的方法主要有三种：
+			（1） drawString(String str,int x,int y),在指定的位置显示字符串。
+			（2） drawChars(char data[],int offset,int length, int x, int y),在指定的位置显示字符数组中的文字，从
+			字符数组的offset 位置开始，最多显示length 个字符。
+			（3） drawBytes(byte data[],int offset,int length,int x,int y), 在指定的位置显示字符数组中的文字，从字
+			符数组的offset 位置开始，最多显示length 个字符。
+			这里给出的显示位置(x,y)为文字的基线的开始坐标，不是文字显示的矩形区域的左上角坐标。
+			文字字型有三个要素：字体、风格和字号。常用的字体有Times New Roman、Symbol、宋体、楷体等。常用的
+			风格有三种：正常、粗体和斜体，分别用三个常量表示：Font.PLAIN(正常)、Font.BOLD(粗体)和Font.ITALIC（斜体）。
+			风格可以组合使用，例如 ，Font.BOLD+Font.ITALIC。字号是字的大小，单位是磅。	
+			在Java 语言中，用类Font 对象字型。Font 类构造方法有：
+			Font(String fontName,int style,int size),３个参数分别表示字体、风格和字号。例如，代码：
+			Font fnA = new Font(“细明本”,Font.PLAIN,12)
+			设置的字型的是：细明体、正常风格， 12 磅字号。
+			Font 类的其他常用方法：
+			（1） getStyle()，返回字体风格。
+			（2） getSize()，返回字体大小。
+			（3） getName()，返回字体名称。
+			（4） isPlain()，测试字体是否是正常字体。
+			（5） isBold(),测试字体是否是粗体。
+			（6） isItalic()，测试字体是否是斜体。
+			用类Color 的对象设置颜色，有两种方法生成各种颜色。
+			一是用类Color 预定议的颜色：black，red, white,yellow ……；
+			二是通过红绿蓝（RGB）的值合成颜色。
+			与颜色有关的常用方法：
+			（1）用类Color 的构造方法Color（int R, int G,int B）创建一个颜色对象，参数R,G,B 分别表示红色、绿色和
+			蓝色，它们的取值是从０到255。
+			（2）用类Graphics 的方法setColor(Color c)，参数c 的取值参见表７－１。
+			（3）用类Component 的方法setBackground(Color c)设置背景颜色。因为小程序是组件类的子类，直接可用
+			setBackground()方法改变背景色。
+			（4）用类Graphics 的方法getColor()获取颜色。
+			Color 类预定义颜色常量:
+			black blue cyan
+			darkGray gray green
+			lightGray magenta orange
+			pink red white yellow
+		７．１．３绘图模式
+			绘图模式是指后绘制的图形与早先绘制的图形有重叠时，如何确定重叠部分的颜色。例如，后绘制的覆盖早先绘制
+			的；或者后绘制与早先绘制的两种颜色按某种规则混合。主要有正常模式和异或模式两种：正常模式是后绘制的图形覆
+			盖在早先绘制的图形之上，使早先贩图形的重叠部分不再可见。异或模式把绘图看作是按图形着色。异或模式绘图时，
+			将当前正要绘图的颜色、原先绘制的颜色以及异或模式设定的颜色作特定的运算，得到实际绘图颜色。设置绘图模式的
+			方法有：
+			（1）setPaintMode()，设置绘图模式为覆盖模式（正常模式）。正常模式是绘图的默认模式。
+			（2）setXORMode(Color c)，设置绘图模式为异或模式，参数c 为异或模式设定的绘图颜色。
+			设背景色为Ｂ，用setXORMode()设置的颜色为Ｃ，另用某个非背景色Ｄ绘图，XOR 模式有以下确定实际绘图颜色的法则：
+			B + B = C,用背景色绘图，出现Ｃ颜色。
+			D + D = B,当一个图形重画时就能清除原先画的图形。
+			B + D = B 和Ｄ的混合色（当Ｂ，Ｄ不相同时）。
+			如果某区域已用Ｄ着色，再用Ｅ着色，则结果是：
+			D + E = D 和Ｅ的混合色（当Ｄ，Ｅ不相同时）。
+	７．２ 绘图
+
+第八章、多线程
+	1、线程的基本概念
+		程序是一段代码，是计算机执行的蓝本。编写程序就是希望计算机按程序蓝本执行。
+		进程是程序的一次执行过程，从代码加载、执行，直至完成的一个完整过程。
+		线程是一个控制流，也是一个执行过程，但单位比进程小。
+		1.1、线程的生命周期
+			一个线程“创建、工作、死亡”的过程称为线程的生命周期.线程生命周期共有五个状态:新建状态、就绪状态、运行状态、阻塞状态和死亡状态。
+			1． 新建状态
+			新建状态指创建了一个线程，但它还没有启动。处于新建状态的线程对象，只能够被启动或终止。
+			例如，以下代码使线程myThread 处于新建状态：
+			Thread mythread = new Thread();
+			2． 就绪状态
+			就绪状态是当线程处于新建状态后，调用了start()方法，线程就处于就绪状态。就绪状态线程具备了运行条
+			件，但尚未进入运行状态。处于就绪状态的线程可有多个，这些就绪状态的线程将在就绪队列中排队， 等待CPU 资
+			源。线程通过线程调试获得CPU 资源变成运行状态。例如，以下代码使线程myThread 进入就绪状态：
+			myThread.start();
+			3． 运行状态
+			运行状态是某个就绪状态的线程获得CPU 资源，正在运行。如果有更高优先级的线程进入就绪状态，则该线程
+			将被迫放弃对CPU 的控制权，进入就绪状态。使用yield()方法可以使线程主动放弃CPU。线程也可能由于执
+			行结束或执行stop()方法进入死亡状态。每个线程对象都有一个run()方法，当线程对象开始执行时，系统就
+			调用该对象的run()方法。
+			4． 阻塞状态
+			阻塞状态是正运行的线程遇到某个特殊情况。例如，延迟、挂起、等待Ｉ/Ｏ操作完成等。进入阻塞状态的线程
+			让出CPU，并暂时停止自己的执行。线程进入阻塞状态后，就一直等待，直到引起阻塞的原因被消除，线程又
+			转入就绪状态，进入就绪队列排队。当线程再次变成运行状态时，将从原来暂停处开始继续运行。
+			5． 死亡状态
+			死亡状态是指线程不再具有继续运行的能力，也不能再转到其他状态。一般有两种情况使一个线程终止，进入
+			死亡状态。一是线程完成了全部工作，即执行完run()方法的最后一条语句。另一种是线程被提前强制性终止。
+		1.2、线程调度与优先级
+			Java 提供了一个线程调度器来监视和控制就绪状态的线程。线程的调度策略采用抢占式，优先级高的线程比优先级
+			低的线程优先执行。在优先级相同的情况下，就按“先到先服务”的原则。线程的优先级用数值表示，数值越大优先级
+			越高（范围1~10）。每个线程根据继承特性自动从父线程获得一个线程的优先级，也可在程序中重新设置。对于任务较
+			紧急的重要线程，可安排较高的优先级。相反，则给一个较低的优先级。
+			每个Java 程序都有一个默认的主线程，就是通过JVM 启动的第一个线程。对于应用程序，主线程执行的是main()方法。
+			对于Applet，主线程是指浏览器加载并执行小应用程序的那一个线程。子线程是由应用程序创建的线程。另有一种线程
+			称为守护线程（Daemon），这是一种用于监视其他线程工作的服务线程，它的优先级最低。
+	2、Thread类和Runnable接口
+		Java 程序实现多线程应用有两种途径：一是继承Thread 类声明Thread 子类，用Thread 子类创建线程对象。二是在类
+		中实现Runnable 接口，在类中提供Runnable 接口的run()方法。无论用哪种方法，都需要java 基础类库中的Thread
+		类及其方法的支持。程序员能控制的关键性工作有两个方面：一是编写线程的run()方法；二是建立线程实例。
+		2.1、Thread类
+			 1、Thread 类为创建线程和线程控制提供以下常用的方法：
+			（1） Thread()，创建一个线程。线程名按创建顺序为Thread_1、Thread_2…等。
+			（2） Thread(String m)，创建一个以m 命名的线程。
+			（3） Thread(Runnable target),创建线程，参数target 是创建线程的目标。目标是一个对象，对象的类要实现Runnable接口，类中给出接口的run()方法。
+			（4） public Thread(Runnable target,String m)，创建线程，参数target 是创建线程的目标，m 是线程名。
+			（5） Thread(ThreadGroup g,String m)，创建一个以m 命名的线程，该线程属于指定线程组g。
+			（6） Thread(ThreadGroup g,Runnable target),创建一个属于指定线程组g 的线程，target 是线程的目标。
+			（7） Thread(ThreadGroup g,Runnable target,String m),创建一个线程，名为m，属于指定的线程组g，target 是线程的目标。
+			（8） getPriority()，获得线程的优先级。（范围1~10）。
+			（9） setPriority(int p),设定线程的优先级为p。线程创建时，子线程继承父线程的优先级。优先级的数值越大优先级越高（缺省为５）。常用以下３个优先级：			
+				Thread.MIN_PRIORITY（最低：1），Thread.MAX_PRIORITY（最高：10）和Thread.NORMAL_PRIORITY（标准）。
+			（10） start(),启动线程，让线程从新建状态到就绪状态。
+			（11） run()，实现线程行为（操作）的方法。
+			（12） sleep(int dt)，让线程休眠dt 时间，单位是毫秒。例如，代码sleep(100);
+			让线程休眠100 毫秒时间段。在以后的这个时间段中，其他线程就有机会被执行。当休眠时间一到，将重新到就绪
+			队列排队。由于sleep()方法可能会产生Interrupted Exception 异常，应将sleep()方法写在try 块中，并用catch
+			块处理异常。sleep()方法是static 方法，不可重载。
+			（13） currentThread(),获得当前正在占有的CPU 的那个线程。
+			（14） getName(),获得线程的名字。
+			（15） setName(),设置线程的名字。
+			（16） isAlive()，返回boolean 类型值，查询线程是否还活跃。
+			（17） destroy()，强制线程生命期结束。
+			（18） stop(),强制线程生命期结束，并完成一些清理工作，及抛出异常。
+			有时，小应用程序的界面已从屏幕消失，但并没有停止线程的执行，会一直到浏览器关闭才结束。要在小应用程序
+			的stop()方法中终止线程的执行。
+			（19） suspend()，挂起线程，处理不可运行的阻塞状态。
+			（20） resume()，恢复挂起线程，重新进入就绪队列排队。
+			（21） yield()，暂停当前正执行的线程，若就绪队列中有与当前线程同优先□线程，则当前线程让出CPU 控制权，移到就绪队列的队尾。若队列中没有同优先级或更高优先级的线程，则当前线程继续执行。
+			2、用Thread类实现多线程
+		2.2、Runnable接口
+			Java.lang.Runnable 接口，只有run()方法需要实现。一个实现Ｒunnable 接口的类实际上定义了一个在主线程之外的新线程的操作。
+			用Runnable 接口实现多线程的主要工作是：声明实现Runnable 接口的类，在类内实现run()方法；并在类内声明
+			线程对象，在init()，方法或start()方法中创建新线程，并在start()方法中启动新线程。
+	3、线程互斥和同步
+		3.1、线程互斥
+			解决多线程互斥的办法是，某个线程在使用共享变量时，别的线程暂时等待，等待正在使用共享变量的线程使用结束。等到前一个线程使用结束后，
+			才让等待使用共享变量的其他线程中的某一个使用它，而别的线程继续等待。如能保证它们是逐个使用共享变量的，
+			再多的线程使用共享变量也不会产生混乱。
+			多线程互斥使用共享资源的程序段，在操作系统中称为临界段。临界段是一种加锁的机制，与多线程共享资源有关。
+			临界段的作用是在任何时刻一个共享资源只能供一个线程使用。当资源未被占用，线程可以进入处理这个资源的段，
+			从而得到该资源的使用权；当线程执行完毕，便退出临界段。如果一个线程已某个共享资源的临界段，并且还没有
+			使用结束，其他线程必须等待。
+			在Java 语言中，使用关键字synchronized 定义临界段，能对共享对象的操作上锁。
+		3.2、线程同步
+			多线程之间除有互斥情况外,还需要同步.当线程A 使用到某个对象,而此对象又需要线程B 修改后才能符合本线程的需要,这时线程A 就要等待线程B 完成修改工作.这种线程相互等待称为线程的同步.
+			为了实现同步,Java 语言提供wait()、notify()和notifyAll()三个方法供线程在临界段中使用。
+			在临界段中使用wait()方法，使执行该方法的线程等待，并允许其他线程使用这个临界段。wait()方法常用以下两种格式：
+			wait(),让线程一直等待，直到被notify()或notifyAll()方法唤醒。
+			wait(long timeout),让线程等待到被唤醒，或经过指定时间后结束等待。
+			当线程使用完临界段后，用notify()方法通知由于想使用这个临界段而处于等待的线程结束等待。notify()方法只是通知第一个处于等待的线程。
+			如果某个线程在使用完临界段方法后，其他早先等待的线程都可结束等待，重新竞争CPU，则可以notifyAll()方法。
+		请注意实现线程同步的一般原则：如果两个或多个线程修改同一个对象，那么将执行修改的操作方法用关键字
+		synchronized 修饰之，使它成为临界段。例如，在上述例子中，许多顾客线程共享saleslady 对象，其中ruleForSale()作为临界段。
+		如果进入临界段的线程必须等待某个对象的状态被改变，那么应调用wait()方法，使线程等待。反之，当另一个进
+		入临界段的线程修改了某个对象的状态后，就应该调用notify()方法，及时通知那些处于等待的线程，它们等待的环境
+		已经发生了改变。
+		有三种类型的代码段能够作为临界段：类方法、实例方法、一个方法中的代码块。
+		synchronized void myMethod(){//需要同步的代码
+		}
+		可以等价地描述成如下：
+		void myMethod(){
+		synchronized(this){需要同步的代码}
+		}
+		3.3、死锁
+			如果发生多个线程形成一个等待环，即第一个线程在等候第二个线程，而第二个线程在等候第三个线程，依次类推，最
+			后一个线程在等候第一个线程。这样，所有线程都陷入相互等待的状态。这个循环等待现象称为死锁。在互斥同步机制
+			的实现中，稍有不当，就可能产生死锁。Java 语言对死锁问题没有特别处理，只能由用户在编程时注意。
+第九章、输入和输出流
+	1、字节流和字符流
+		对Java 程序而言，输入/输出包括：对外设通道的输入/输出、对文件的读和写、对网络数据的读和写。Java 语言采用流（stream）的机制实现输入和输出。
+		流是一种有方向的字节/字符数据序列。
+		程序为获取数据，打开一个来自数据源的流，通过流读取数据。程序为输出数据，打开一个到目的地的流，就可以将数据输出到目的地。对于程序来说，
+		I/O流提供一条数据通道，输入流指的是数据的来源，程序从输入流中读取数据；输出流是数据要去的目的地，程序向输
+		出流写的数据被传送到目的地。虽然大多数情况，I/O 流与磁盘文件有关，但数据源也可以是键盘、鼠标、内存、数据
+		的目的地也可以是内存、显示器。
+		实现输入/输出操作的类库在java.io 包中。包中有一组支持打开流、向流写数据、从流读取数据和关闭流等操作的
+		类，要使用这些类，程序必须导入java.io 包。
+		1.1、File对象
+			建立输入输出流对象之前可以先建立一个File（文件）对象。File 对象是File 类的实例。File 对象对应一个目录或文件，对象的属性包括文件路径、名字、文件长度、可否读写等。
+			File对象只用来命名文件、查询文件属性和处理目录，不提供读写文件操作。
+			File 类常用的构造方法：
+			（１） File(String s)，由s 确定File 对象的文件名。
+			（２） File(String directory ,String s)，由directory 确定File 对象的文件目录，由s 确定文件名。
+			以下是创建File 对象的示意代码：
+			File f1 = new file(“/mydir/myfile.txt”);
+			File f2 = new File(“/mydir”,”myfile.text”);
+		1.2、流对象
+			Java 程序的输入和输出流称为流对象，文件读写的主要操作包括：建立流对象、读数据、写数据和关闭流。输入输出流由文件名或File 对象创建。
+			根据输入输出数据的类型是字节还是字符，java.io 提供两种基本抽象类：一种用于读写字节，另一种用于读写字符。
+			字节流用于读写二进制数据，比如图像和声音文件等。字节流数据是８位的，由InputStream 类和OutputStream
+			类为字节流提供API 和部分实现。字节流读和写操作由FileInputStream 类和FileOutputStream 类提供支持。它们分别是InputStream 和OutputStream 类的子类。
+			字符流数据是16 位的Unicode 字符，字符流能处理Unicode 字符集中的任何字符，由Reader 类和Writer 类为字
+			符流提供API 和部分实现。读和写操作由FileReader 类和FileWriter 类提供支持。它们分别是Reader 和Ｗriter 的子类。
+			1、建立流对象
+				（１） FileInputStream(String name),直接指定的文件名创建输入流。
+				（２） FileInputStream(File filename),用文件对象创建输入流。
+			2、输入流的常用方法
+				FileInputStream 类包含下面用于读字节和字节数组的方法：
+				（1） int read()从输入流读取下一个字节，返回一个整数，整数范围在０~255 之间。
+				（2） int read(byte b[]),从输入流读取长度为b.length 的字节数据，写入到字节数组b,并返回实际所读取的字
+				节数。
+				（3） int read(byte b[],int off, int len),从数据流中读取长度为len 的字节数据，写入到字节数组b 中从下
+				标off 开始的数组元素中，并返回实际读取的字节数。
+				使用以上三个方法时，如果在读数据之前，已到达输入的末端位置，没有读入一个字节数据，用返回-1 表示流在读
+				之前已结束。
+				FileReader 类包含下面用于读字符和字符数组的方法：
+				（1） int read(),从输入流读取下一个字符。如果读前已到流的末尾，则返回-1。
+				（2） int read(char b[]),从输入流读取长度为b.length 的字符数据，写入到字符数组b，并返回实际所读取的
+				字符数。
+				（3） int read(char b[],int off,int len)，从数据流中读取长度为len 的字符数据，写入到字符数组b 中从下
+				标off 开始的数组元素中，并返回实际读取的字符数。
+				对于输入流，另外还有一个常用的方法：
+				long skip(long n)，从输入流的当前读位置起向前移动n 个字节/字符，并返回实际跳过的字节/字符数。
+			3、输出流常用方法
+				FileOutputStream 类包含下面用于输出字节和字节数组的方法：
+				（1） int write(int c),输出一个字节。
+				（2） int write(byte b[]),输出存于字节数组b 中的字节数据。
+				（3） int write(byte b[],int off,int len),输出字节数组b 中从下标off 开始的多至len 个字节。
+				FileWriter 类也包含用于输出字符和字符数组的方法：
+				（1） int write(int c),输出一个字符。
+				（2） int write(char b[]),输出存于字符数组b 中的字符数据。
+				（3） int write(char b[],int off,int len),输出字符数组b 中人下标off 开始的多至len 个字符。
+				对于输出流，另外还有一个常用方法：
+				void flush(),刷空输出流，并且输出所有存储在缓冲区的内容。
+				流使用结束后，关闭流并且释放与该流相关的资源用方法close()。为了程序安全，也为了提高计算机的资源利用
+				率。流使用结束后，程序应及时关闭它。
+	2、缓冲式输入输出
+		当程序处理的文件按行组织，并且行不是定长时，用前面所述的流类实现很不方便。程序如果要按行输入输出，需采用缓冲式输入输出方式。
+		2.1、缓冲式输入
+			采用缓冲式输入时，对于程序的输入请求，系统一次性输入足够多的内容放在内存缓冲区中。供程序以后的输入请求使用，待缓冲区内容用完，再一次性输入足够多的数据。
+			程序要采用缓冲式输入，只要先创建FileReader 对象，再利用FileReader 对象创建BufferedReader 对象，习惯称为FileReader 对象接到BufferedReader 对象上。
+			BufferedReader in;
+			file = new FileReader(“abc.txt”);//创建fileReader 对象
+			in = new BufferedReader(file);//接到BufferedReader 类对象上
+			in.readLine();
+			这样，就可以对BufferedReader 对象in 使用readLine()方法，发行输入文件“abc.txt”.
+		2.2、缓冲式输出
+			采用缓冲式输出时，对于程序的输出请求，系统先将内容暂存于缓冲区，待缓冲区满或输出结束，才将暂存于缓冲
+			区中的内容输出到流的目的地。
+			BufferedWriter 类是提供缓冲式输出的类。程序只要先创建FileＷriter 对象，再选用FileWriter 对象创建
+			BufferedWriter 对象，习惯称为FileWriter 对象接到BufferedWriter 对象上。对BufferedWriter 对象使用write()
+			方法就能实现缓冲式输出。采用缓冲式输出时，write()方法只是将字符串写入到系统内设的缓冲区，等缓冲区满后，系
+			统自动将缓冲区中内容写入到文件。如果想立即写入到文件，则需要调用flush()方法。
+	3、随机访问
+		流在某些应用中，不希望顺序读写流。例如，跳过部分不需要的数据，去读更后面的数据；或者对早先读过的数据
+		要重新读入等。这样的应用需采用随机访问方式，本节介绍文件随机访问的方法。
+		文件随机访问可利用RandomAccessFile 类实现，RandomAccessFile 类创建的流既可以随机输出，也可以随机输入。
+		１． RandomAccessFile 类构造方法
+		RandomAccessFile 类常用的构造方法是RandomAccessFile(String name, String mode)和RandomAcessFile(File
+		file,String mode)。参数mode 取值：“r”（只读）或 “rw”（可读写）。构造方法可能产生“文件不存在”异常，
+		创建对象的代码应能捕获FileNotFoundException 异常。对流进行读写操作时，还应该能捕获IOException 异常。
+		２． RandomAcessFile 类读写文件的方法
+		RandomAccessFile 类常用的读写文件方法有：
+		（1） int read(),读取一个字节，当前读位置往前移动８个二进制位。
+		（2） int read(byte b[]),把文件中的数据读到一个字节数组，当前读位置顺次往前移动。
+		（3） int read(byte b[],int offset, int length),从文件中读取length 个字节，把读入的字节存到数组b[],存储从偏移量为offset 的位置开始；当前读位置也往前移动。
+		（4） String readLine(),读取文件中的一行字节，遇到换行，结束一次读入过程。
+		（5） String readUTF(),从一个UTF 格式的文件中读取一个字符串。
+		（6） boolean readBoolean(),读取一个布尔值。
+		（7） byte readByte(),读取一个字节。
+		（8） short readShort(),读取一个short 型整数。
+		（9） long readLong(),读取一个long 型整数。
+		（10） char readChar(),读取一个字符。
+		（11） int readInt(),读取一个整数。
+		（12） void writeBoolean(boolean v),写一个布尔值。
+		（13） void writeByte(int v),写一个字节。
+		（14） void writeShort(int v),写一个short 型整数。
+		（15） void writeChar(int v),写一个字符。
+		（16） void writeInt(int v),写一个型整数。
+		（17） void writeLong(long v),写一个long 型整数。
+		（18） void writeFloat(float v),写一个浮点数。
+		（19） void writeDouble(double v),写一个双精度浮点数。
+		（20） void writeBytes(String v),写一个字符串作为字符序列，写这个字符串。
+		（21） void writeChars(String v),写一个字符串作为字符序列，写这个字符串。
+		（22） void seek(long offset),移动当前读写位置距文件开始offset 位置。
+	4、文件对话框
+		大多数应用程序要使用文件，或读取文件的内容，或将数据保存于文件中，其中文件通过文件对话框指定。本节介
+		绍程序使用文件对话框打开和保存文件的方法。可以用javax.swing 包中的类JFileChooser 实现打开和保存文件对
+		话框。
+		１． JFileChooser 类的构造方法
+		(1) JFileChooser()，建立一个JFileChooser 对象，默认的文件对话框路径是用户的Home 目录。
+		(2) JFileChooser(String currentDirectoryPath),建立一个JFileChooser 对象，并设置文件对话框的打开路径。
+		２． JFileChooser 类的其他常用方法
+		(1) showOpenDialog(),打开“打开文件对话框”。
+		(2) showSaveDialog(),打开“保存文件对话框”。
+		文件对话框打开后，在用户按下按钮或关闭对话框时，上述两个方法会返回一个整数值，这个整数值是以下三个之
+		一：
+		JFileChooser.CANCEL_OPTION,用户按下“撤销”按钮。
+		JFileChooser.APPROVE_OPTION,用户按下“打开/保存”按钮。
+		JFileChooser.ERROR_OPTION,有错，或是对话框非正常关闭。
+		当程序发现用户选择了文件并按下了“打开/保存”按钮后，程序就可以利用getSelectedFile()方法取得文件对象，
+		并利用这个文件对象用方法getName()取得文件的名称，用方法getPath()取得文件的路径。
+		３． 设置筛选条件
+		在打开文件对话框中，还可以设置筛选条件，即指定文件的类型。使用FileFilter 类，该类预设两个方法，分别是
+		accept(File f),与getDescription()。当目录中的文件与筛选条件相符时，方法accept()返回true，并将此文件名显
+		示在对话框中。而getDescription()方法则是对筛选条件的描述，由程序指定，例如，“*.java”等。
+		由于FileFilter 类是一个抽象类，程序要设置打开文件对话框的文件筛选条件，就应该继承这个类，编写一个实现
+		类，实现上述两个方法。然后，就可以使用JFileChooser 类addChoosableFileFilter()方法，或者是setFileFilter()
+		方法设置筛选条件。
+第十章、网络与数据库编程基础
+	1、Java网络编程基础
+		1.1、IP 地址和InetAddress 类

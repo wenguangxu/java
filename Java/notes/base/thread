@@ -1,0 +1,40 @@
+一、创建线程
+	1、继承Thread类
+	2、实现Runnable接口
+二、线程控制的基本方法
+	isAlive() 判断线程是否还活着，即线程是否还未终止
+	getPriority()  获得线程的优先级
+	setPriority()  设置线程的优先级
+	Thread.sleep() 将当前线程睡眠指定毫秒数
+	join()         调用某线程的方法，将当前线程与该线程合并，即等待该线程结束，在恢复当前线程的运行。
+	yield()        让出cpu，当前线程进入就绪队列等待调度
+	wait()         当前线程进入对象的wait pool
+	notify/notifyAll 唤醒对象的wait pool中的一个/所有等待线程 
+三、线程的优先级别
+	Java提供一个线程调度器来监控程序中启动后进入就绪状态 的所有线程。
+	线程调度器按照线程的优先级决定应调度哪个线程来执行。
+	
+	线程的优先级用数字表示，范围从1到10，一个线程的缺省优先级是5。
+	Thread.MIN_PRIORITY = 1
+	Thread.MAX_PRIORITY = 10
+	Thread.NORM_PRIORITY = 5
+	获取或设置优先级方法：
+		int getPriority()
+		void setPriority(int newPriority)
+四、线程同步
+	在Java语言中，引入了对象互斥锁的概念，保证共享数据操作的完整性。
+	每个对象都对应于一个可称为"互斥锁"的标记，这个标记保证在任一时刻，只能有一个线程访问该对象。
+	
+	关键字synchronized来与对象的互斥锁联系，当某个对象synchronized修饰时，表明该对象在任一时刻只能由一个线程访问。
+	
+	synchronized的使用：
+		1：
+			synchronized(this){
+				...
+			}
+		2：放在方法中，表示整个方法为同步方法
+			synchronized public void add(){...}
+五、wait 、sleep区别
+	wait：Object的方法，wait时别的线程可以访问锁定对象
+		调用wait方法的时候必须锁定该对象
+	sleep：Thread的方法，sleep时别的线程也不可以访问锁定对象

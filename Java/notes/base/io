@@ -1,0 +1,73 @@
+一、File类
+	java.io.File类代表系统文件名(路径和文件名)
+	File类的常见构造方法
+		public File(String pathname)
+			以pathname为路径创建File对象，如果pathname是相对路径，则默认的当前路径在系统属性user.dir中存储。
+		public File(String parent,String child)
+			以parent为父路径，child为子路径创建File对象
+	File的静态属性String separator存储了当前系统的路径分隔符
+二、Java流式输入/输出原理
+	在Java程序中，对于数据的输入/输出操作以"流"(Stream)方式进行，Java提供了各种各样的"流量"，用以获取不同种类的数据。
+三、输入/输出流的分类
+	1、对流的分类
+		按数据流的方向不同分为输入流和输出流。
+		按处理数据单位不同分为字节流和字符流。
+		按照功能不同可以分为节点流和处理流。
+	2、Java中所有流类型位于包java.io内都分别继承自以下四种抽象流类型。
+		                          字节流                                  字符流
+		输入流         InputStream              Reader
+		输出流         OutputStream             Writer
+	3、节点流和处理流
+		节点流可以从一个特定的数据源(节点)读写数据(如文件、内存)
+		处理流是"连接"在已存在的流(节点流或处理流)之上，通过对数据的处理为程序提供更为强大的读写功能。
+四、InputStream
+	继承自InputStream的流都是用于向程序中输入数据，且数据的单位为字节(8 bit)
+	基本方法：
+		int read() throws IOException //读取一个字节并以整数的形式返回(0~255)，如果返回-1已到输入流的末尾
+		int read(byte[] buffer) throws IOException //读取一系列字节并存储到一个数组buffer，返回实际读取的字节数，如果读取前已到输入流的末尾返回-1
+		int read(byte[] buffer,int offset,int length) throws IOException //读取length个字节并存储到一个数组buffer，从offset位置开始，如果读取前已到输入流的末尾返回-1
+		void close() throws IOException //关闭流释放内存资源
+		long skip(long n) throws IOException //跳过n个字节不读，返回实际跳过的字节数
+五、OutputStream
+	继承自OutputStream的流是用于程序中输出数据，且数据的单位为字节(8 bit)
+	基本方法：
+		void write(int b) throws IOException //向输出流中写入一个字节数据，该字节数据为参数b的低8位
+		void write(byte[] b) throws IOException //将一个字节类型的数组中的数据写入输出流
+		void write(byte[] b,int off,int len) throws IOException //将一个字节类型的数组中的从指定位置(off)开始的len个字节写入到输出流
+		void close() throws IOException //关闭流释放内存资源
+		void flush() throws IOException //将输出流中缓冲的数据全部写出到目的地
+六、Reader
+	继承自Reader的流都用于向程序中输入数据，且数据的单位为字符(16 bit)
+	基本方法：
+		int read() throws IOException //读取一个字节并以整数的形式返回(0~255)，如果返回-1已到输入流的末尾
+		int read(char[] buffer) throws IOException //读取一系列字符并存储到一个数组buffer，返回实际读取的字符数，如果读取前已到输入流的末尾返回-1
+		int read(char[] buffer,int offset,int length) throws IOException //读取length个字符并存储到一个数组buffer，从offset位置开始，如果读取前已到输入流的末尾返回-1
+		void close() throws IOException //关闭流释放内存资源
+		long skip(long n) throws IOException //跳过n个字符不读，返回实际跳过的字节数
+七、Writer
+	继承自Writer的流都用于从程序输出数据，且数据的单位为字符(16 bit)
+	基本方法：
+		void write(int b) throws IOException //向输出流中写入一个字符数据，该字符数据为参数b的低16位
+		void write(char[] b) throws IOException //将一个字符类型的数组中的数据写入输出流
+		void write(char[] b,int off,int len) throws IOException //将一个字符类型的数组中的从指定位置(off)开始的len个字符写入到输出流
+		void write(String str) throws IOException //将一个字符串中的字符写入到输出流
+		void close() throws IOException //关闭流释放内存资源
+		void flush() throws IOException //将输出流中缓冲的数据全部写出到目的地
+八、转换流
+	InputStreamReader和OutputStreamWriter用于字节数据到字符数据之间的转换。
+	InputStreamReader需要和InputStream"套接"
+	OutputStreamWriter需要和OutputStream"套接"
+	转换流在构造时可以指定其编码集合
+九、数据流
+	DataInputStream和DataOutputStream分别继承自InputStream和outputStream，它属于处理流，需要分别套接在InputStream和OutputStream类型的节点流上。
+	DataInputStream和DataOutputStream提供了可以存取与机器无关的Java原始类型数据(如：int,double等)的方法。
+十、打印流
+	PrintWriter和PrintStream都属于输出流，分别针对字符和字节
+	PrintWriter和PrintStream提供了重载的print、println方法用于多种数据类型的输出。
+	PrintWriter和PrintStream的输出操作不会抛出异常，用户通过检测错误状态获取错误信息。
+	PrintWriter和PrintStream有自动flush功能。
+十一、对象流
+	可以从文件中读取Objec对象
+	Serializable 可以序列化 表示对象可以被写入文件，jdk控制序列化过程
+	transient 透明的，不参与序列化
+	Externalizable  自己实现序列化过程

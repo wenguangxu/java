@@ -1,0 +1,63 @@
+一、容器的类图结构
+	       Collection(interface)
+            |                 |
+    Set(interface)        List(interface)                     Map(interface)         
+         |                 |          |                              |
+HashSet(class)   LinkedList(class)  ArrayList(class)            HashMap(class)
+
+二、Collection接口
+	1、Collection接口定义了存取一组对象的方法，其子接口Set和List分别定义了存储方式。
+		Set中的数据对象没有顺序且不可以重复。
+		List中的数据对象有顺序且可以重复。
+	2、Map接口定义了存储"键(key)-值(value)映射对"的方法。
+	3、容器类对象在调用remove、contains等方法时需要比较对象是否相等，这会涉及到对象类型的equals方法和hashCode方法；
+	        对于自定义类型，需要重写equals和hashCode方法以实现自定义的对象相等规则。
+		   注意：相等的对象应该具有相等的hash codes
+三、Iterator接口
+	1、所有实现了Collection接口的容器类都有一个iterator方法用以返回一个实现了Iterator接口的对象。
+	2、Iterator对象称作迭代器，用以方便地实现对容器内元素的遍历操作。
+	3、Iterator接口定义了如下方法：
+		boolean hasNext();
+		Object next();
+		void remove();
+	4、Iterator对象的remove方法是在迭代过程中删除元素的唯一的安全方法。
+四、增强的for循环
+	1、增强的for循环对于遍历array或Collection的时候相当简便
+		语法 : for(String a : arrayA){}
+	2、缺陷
+		数组：不能方便地访问下标值
+		集合：与使用Iterator相比，不能方便地删除集合中的内容。(在内部也是调用Iterator)
+	总结：除了简单遍历并读出其中的内容外，不建议使用增强for
+五、Set接口
+	1、Set接口是Collection的子接口，Set接口没有提供额外的方法，但实现Set接口的容器类中的元素是没有顺序的，而且不可以重复。
+	2、Set容器可以与数学中"集合"的概念相对应。
+	3、Java中提供的Set容器类有hashSet，TreeSet等。
+六、List接口
+	1、List接口是Collection的子接口，实现List接口的容器类中的元素是有顺序的，可以重复的。
+	2、List容器中的元素都对应一个整数型的序号记载其在容器中的位置，可以根据序号存取容器中的元素。
+	3、Java提供的List容器有ArrayList，LinkedList等。
+七、List常用算法
+	类java.util.Collections提供了一些静态方法实现了基于List容器的一些常用算法。
+	void sort(List) 排序
+	void shuffle(List) 随机排列
+	void reverse(List) 逆序排列
+	void fill(List,Object)用一个特定的对象重写整个List容器
+	void copy(List dest,List src) 将src List容器内容拷贝到dest List容器
+	int binarySearch(List,Object) 对于顺序的List容器，采用二分法查找特定对象。
+八、Comparable接口
+	所有可以"排序"的类都实现了java.lang.Comparable接口，通过实现comparaTo方法从而确定该类对象的排序方式。
+九、Map
+	1、如何选择数据结构
+		衡量标准：读的速度和改的速度
+		Array读快改慢
+		Linked改快读慢
+		Hash读和改差不多
+	2、实现Map接口的类用来存储键-值对。
+		Map接口的实现类有HashMap和TreeMap等。
+		Map类中存储的键-值对通过键来标识，所以键值不能重复。
+十、auto-boxing/unboxing(自动打包/解包)(自动装箱/自动拆箱)
+	自动将基础数据类型转换为对象
+	自动将对象转换为基础类型
+十一、泛型
+	
+	

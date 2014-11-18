@@ -1,0 +1,16 @@
+1、导出JavaDoc时控制编码：
+   导出时在最后的配置选项Extra Javadoc options中配置以下参数
+   -encoding UTF-8 -charset UTF-8
+2、文档注释中可以加入html标签和css样式，导出JavaDoc时可以显示。
+3、文档注释：
+   @see 引用其他类或方法
+   		格式：@see 类名
+   			  @see 完整类名
+   			  @see 完整类名#方法
+   @version 版本信息
+   @author 作者
+   方法中的文档参数：
+   @param  参数名
+   @return 返回值
+   @deprecated 标识该方法为旧功能
+   @exception 异常

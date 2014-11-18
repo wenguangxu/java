@@ -1,0 +1,17 @@
+一、内部类
+	1、好处：
+		可以方便的访问包装类的成员。
+		可以更清晰的组织逻辑，防止不应该被其他类访问的类进行访问。
+	2、何时使用
+		该类不允许或不需要其他类进行访问时
+二、Graphics
+	1、每个Component都有一个paint(Graphics p)用于实现绘图目的，每次重画该Component时都自动调用paint方法。
+	2、Graphics类中提供了许多绘图方法，如：
+		drawRect(int x,int y,int width,int height)
+		fillRoundRect(int x,int y,int width,int height,int arcWidth,int arcHeight)等
+三、鼠标事件适配器
+	1、抽象类java.awt.event.MouseAdapter实现了MouseListener接口，可以使用	其子类作为MouseEvent的监听器，只要重写其相应的方法即可。
+	2、对于其他的监听器，也有对应的适配器。
+	3、使用适配器可以避免监听器类定义没有必要的空方法。
+	4、repaint-update()-paint()
+		

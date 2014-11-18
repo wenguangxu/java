@@ -1,0 +1,58 @@
+一、数组概述
+	数组可以看成是多个相同类型数据组合，对这些数据的统一管理。
+	数组变量属于引用类型，数组也可以看成是对象，数组中的每一个元素相当于该对象的成员变量。
+	数组中的元素可以是任何数据类型，包括基本类型和引用类型。
+二、一维数组的声明方式
+	type var[]; 或 type[] var;
+	例如	：
+	int a1[]; int[] a2;
+	double b[];
+	Person[] b1; String s1[];
+	Java语言中声明数组时不能指定其长度(数组中元素的个数),例如：
+		int a[5];//非法
+三、数组对象的创建
+	Java中使用关键字new创建数组对象，格式为：
+		数组名 = new 数组元素的类型[数组元素的]
+	元素为引用数据类型的数组中的每一个元素都需要实例化。
+四、数组的初始化
+	1、动态初始化
+		数组定义、为数组元素分配空间和赋值的操作分开进行。
+		int a[]; a = new int[3];
+		a[0] = 3; a[1] = 9; a[2] = 8;
+		Date days[]; days = new Date[3];
+		days[0] = new Date(1,4,2004);
+		days[1] = new Date(2,4,2004);
+		days[2] = new Date(3,4,2004);
+	2、静态初始化
+		在定义数组的同时就为数组元素分配空间并赋值，如：
+		int a[] = {3,8,9};
+		Date days[] = {
+			new Date(1,4,2004),
+			new Date(2,4,2004),
+			new Date(3,4,2004)
+		};
+	3、默认初始化
+		数组是引用类型，它的元素相当于类的成员变量，因此数组分配空间后，每个元素也被按照成员变量的规则被隐式初始化。
+		int a[] = new int[7];
+		System.out.println(a[3]);//0
+		Date days[] = new Date[3];
+		System.out.println(days[2]);//null
+五、数组元素的引用
+	1、定义并用运算符new为之分配空间后，才可以引用数组中的每个元素，数组元素的引用方式为：
+		arrayName[index]
+			index为数组元素下标，可以是整型常量或整型表达式。如：
+				a[3] b[i] c[6*i]
+		数组元素下标从0开始：长度为n的数组的合法下标取值范围为 
+			0 ~ n-1
+	2、每个数组都有一个属性length指明他的长度，例如：
+		a.length的值为数组a的长度(元素个数)
+六、算法
+	1、选择排序
+	2、优化选择排序
+	3、冒泡排序
+	4、搜索算法(二分法)
+七、数组的拷贝
+	使用java.lang.System累的静态方法
+	public static void arraycopy(Object src,int srcPos,Object dest,int destPos,int length)
+	可以用于数组src从第srcPos项元素开始的length个元素拷贝到目标数组从destPos项开始的length个位置。
+	如果源数据数据超过目标数组边界会抛出IndexOutOfBoundsException异常。
