@@ -8,7 +8,7 @@ import java.awt.Graphics;
  *
  */
 public class FirstApplet extends java.applet.Applet{
-
+//test
 	public void paint(Graphics g){
 		g.setColor(Color.blue);
 		g.drawString("欢迎学习java语言", 30, 20);
