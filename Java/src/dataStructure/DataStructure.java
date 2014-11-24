@@ -1,4 +1,7 @@
 package dataStructure;
+
+import java.math.BigInteger;
+
 /**
  * 数据结构
  * @author wenguang.xu
@@ -59,8 +62,10 @@ public class DataStructure {
 		System.out.println("a"+gang+"b");
 		System.out.println("a"+dan+"b");
 		System.out.println("a"+shuang+"b");*/
-		parse();
+		//parse();
+		
 	}
+	
 	
 
 }

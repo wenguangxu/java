@@ -46,7 +46,7 @@ public class Operator {
 		System.out.println(i != j);*/
 		
 		//逻辑运算符
-		boolean a = true;
+		/*boolean a = true;
 		boolean b = true;
 		boolean c = false;
 		boolean d = false;	
@@ -56,9 +56,14 @@ public class Operator {
 		System.out.println(a ^ b);//逻辑异或(两个不一样是true)
 		System.out.println(a && b);//短路与(左边能确定结果的话右边就不再计算了)
 		System.out.println(a || b);//短路或(左边能确定结果的话右边就不再计算了)
+*/		
 		
-		
-		//位运算符
+		//字串运算符+(若表达式以一个String开头，那么后续所有运算对象都必须是字串)
+		//若表达式以一个 整数 开头，会进行正常加减运算)
+		System.out.println("1" + 1);
+		System.out.println(1 + "1");
+		System.out.println("1" + 1 + 2);
+		System.out.println(1 + 2 + "1");
 		
 		
 		 
