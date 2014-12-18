@@ -1,4 +1,4 @@
-package base;
+package base.containerTest;
 
 public class EnumTest {
 	public enum MyDoorOpener {
