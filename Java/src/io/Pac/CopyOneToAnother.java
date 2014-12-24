@@ -7,7 +7,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 
 /**
- * 将某个文件的内容全部复制另一个文件。
+ * 将某个文件的内容全部复制另一个文件。(支持中文)
  * 
  * @author wenguang.xu
  * 
@@ -22,6 +22,7 @@ public class CopyOneToAnother {
 			FileWriter out = new FileWriter(outputFile);
 			System.out.println("文件复制程序开始工作");
 			while ((ch = in.read()) != -1) {
+				System.out.println((char) ch);
 				out.write(ch);
 			}
 			in.close();

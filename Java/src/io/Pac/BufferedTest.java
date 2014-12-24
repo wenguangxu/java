@@ -10,54 +10,56 @@ import java.io.FileWriter;
 import java.io.IOException;
 
 public class BufferedTest {
+
 	public static void main(String[] args) {
-		bufferedInputStream();
-		//bufferedTest();
+		//bufferedInputStream();
+		bufferedTest();
 	}
-	
+
 	/**
-	 * 使用缓冲输入流读取
+	 * 使用缓冲输入流读取(不支持中文)
 	 */
-	public static void bufferedInputStream(){
+	public static void bufferedInputStream() {
+		FileInputStream fis = null;
+		BufferedInputStream bis = null;
 		try {
-			FileInputStream fis = new FileInputStream("F:\\a.txt");
-			BufferedInputStream bis = new BufferedInputStream(fis);
+			fis = new FileInputStream("src/io/files/file1.txt");
+			bis = new BufferedInputStream(fis);
 			int b = 0;
-			//System.out.println((char)bis.read());
-			//System.out.println((char)bis.read());
-			bis.mark(3);//设置标记，并指定在标记读取的最大限制(?)
-			for(int i=0;(b=bis.read()) != -1;i++){
-				System.out.print((char)b);
+			while ((b = bis.read()) != -1) {
+				System.out.println((char) b);
 			}
-			bis.reset();//重新标记到mark的位置
-			System.out.println();
-			for(int i=0;(b=bis.read()) != -1;i++){
-				System.out.print((char)b);
-			}
-			bis.close();
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
 		} catch (IOException e) {
 			e.printStackTrace();
+		} finally {
+			try {
+				bis.close();
+				fis.close();
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
 		}
 	}
 
 	/**
-	 * 使用缓冲流写入并读取
+	 * 使用缓冲流读写文件(支持中文)
 	 */
-	public static void bufferedTest(){
+	public static void bufferedTest() {
 		try {
-			BufferedReader br = new BufferedReader(new FileReader("F:\\a.txt"));
-			BufferedWriter bw = new BufferedWriter(new FileWriter("F:\\a.txt"));
+			BufferedReader br = new BufferedReader(new FileReader("src/io/files/file1.txt"));
+			BufferedWriter bw = new BufferedWriter(new FileWriter("src/io/files/file1.txt"));
 			String s = null;
-			for(int i=0;i<100;i++){
+			for (int i = 0; i < 100; i++) {
 				s = String.valueOf(Math.random());
 				bw.write(s);
-				bw.newLine();//写入一行空行
+				bw.newLine();// 写入一行空行
 			}
-			bw.flush();//将缓冲区的数据写入文件
-			
-			while((s=br.readLine()) != null){//读取一行
+			bw.flush();// 将缓冲区的数据写入文件
+
+			//读取文件
+			while ((s = br.readLine()) != null) {// 读取一行
 				System.out.println(s);
 			}
 			bw.close();
