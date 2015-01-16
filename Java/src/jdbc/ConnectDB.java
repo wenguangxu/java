@@ -9,12 +9,15 @@ import java.sql.Statement;
 
 public class ConnectDB {
 	
+	//String driver = "oracle.jdbc.driver.OracleDriver";
+	static String driver = "com.mysql.jdbc.Driver";
+	static String url = "jdbc:mysql://127.0.0.1:3306/test";
+	static String userName = "root";
+	static String pwd = "ok";
+	
 	public static void main(String[] args) {
 		
-		String driver = "oracle.jdbc.driver.OracleDriver";
-		String url = "jdbc:oracle:thin:@localhost:1521:orcl";
-		String userName = "system";
-		String pwd = "ok";
+		
 		
 		ResultSet rs = null;
 		PreparedStatement stmt = null;
@@ -22,13 +25,13 @@ public class ConnectDB {
 		
 		try {
 			Class.forName(driver);
-			// new oracle.jdbc.driver.OracleDriver();
 			conn = DriverManager.getConnection(url,userName,pwd);
-			stmt = conn.prepareStatement("select * from users");
+			stmt = conn.prepareStatement("select * from student");
 			rs = stmt.executeQuery();
 			while (rs.next()) {
 				System.out.println(rs.getString("name"));
 			}
+			
 		} catch (ClassNotFoundException e) {
 			e.printStackTrace();
 		} catch (SQLException e) {
