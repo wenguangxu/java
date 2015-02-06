@@ -26,10 +26,10 @@ public class ConnectDB {
 		try {
 			Class.forName(driver);
 			conn = DriverManager.getConnection(url,userName,pwd);
-			stmt = conn.prepareStatement("select * from student");
+			stmt = conn.prepareStatement("select * from log");
 			rs = stmt.executeQuery();
 			while (rs.next()) {
-				System.out.println(rs.getString("name"));
+				System.out.println(rs.getString("uname"));
 			}
 			
 		} catch (ClassNotFoundException e) {
