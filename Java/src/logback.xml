@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration scan="true" scanPeriod="30 seconds">
+
+	<property name="log.base" value="E:/" />
+	
+	<!-- <property name="log.base" value="../logs/test_log/" /> --> <!-- linux tomcat -->
+	
+	<!--定义一个名为 console 的appender，并将其关联到ch.qos.logback.core.ConsoleAppender-->
+	
+	<appender name="console" class="ch.qos.logback.core.ConsoleAppender">
+	
+		<!-- encoders 作用是将logger事件转换成字节数组，并将字节数组写入到输出流-->
+	
+		<encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
+		
+			<!--格式化输出：%d表示日期，%thread表示线程名，%-5level：级别从左显示5个字符宽度%msg：日志消息，%n是换行符-->
+
+			<pattern>[%-5level][%d{yyyy-MM-dd HH:mm:ss}][%F:%L] - %msg%n</pattern>
+		</encoder>
+	</appender>
+	
+	
+	<appender name="file" class="ch.qos.logback.core.rolling.RollingFileAppender">
+		<Encoding>UTF-8</Encoding>
+		<File>${log.base}startup.log</File>
+		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+			<FileNamePattern>${log.base}startup_%d{yyyy-MM-dd}.log</FileNamePattern>
+			<MaxHistory>30</MaxHistory>
+		</rollingPolicy>
+		<!-- <encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
+			<pattern>[%-5level][%d{yyyy-MM-dd HH:mm:ss}][%F:%L] - %msg%n</pattern>
+			<pattern>%d{HH:mm:ss.SSS} [%thread] %-5level %logger{5} - %msg%n</pattern>  
+		</encoder> -->
+		<layout class="ch.qos.logback.classic.PatternLayout">  
+            <pattern>%d{HH:mm:ss.SSS} [%thread] %-5level %logger{50} - %msg%n  
+            </pattern>  
+        </layout>  
+	</appender>
+	
+	<!-- ^^^^^^^^^^^^^^^^^^^^^^^^^^^^输出到数据库配置 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^-->
+	<!-- 
+	<appender name="db-classic-oracle" class="ch.qos.logback.classic.db.DBAppender">  
+        <connectionSource class="ch.qos.logback.core.db.DataSourceConnectionSource">  
+            <dataSource class="org.apache.commons.dbcp.BasicDataSource">  
+                <driverClassName>oracle.jdbc.driver.OracleDriver</driverClassName>  
+                <url>jdbc:oracle:thin:@192.168.3.250:1521:devdb</url>  
+                <user>logback</user>  
+                <password>logback</password>  
+            </dataSource>  
+        </connectionSource>  
+    </appender>  
+  
+  
+  
+    <appender name="db-classic-mysql" class="ch.qos.logback.classic.db.DBAppender">  
+        <connectionSource class="ch.qos.logback.core.db.DriverManagerConnectionSource">  
+            <driverClass>com.mysql.jdbc.Driver</driverClass>  
+            <url>jdbc:mysql://localhost:3306/logbackdb</url>  
+            <user>root</user>  
+            <password>qqqqqq</password>  
+        </connectionSource>  
+    </appender>  
+  
+    <appender name="db-access" class="ch.qos.logback.access.db.DBAppender">  
+        <connectionSource class="ch.qos.logback.core.db.DriverManagerConnectionSource">  
+            <driverClass>com.mysql.jdbc.Driver</driverClass>  
+            <url>jdbc:mysql://localhost:3306/logbackdb</url>  
+            <user>root</user>  
+            <password>qqqqqq</password>  
+        </connectionSource>  
+        <insertHeaders>true</insertHeaders>  
+    </appender>  
+
+    
+      
+    <appender name="db-classic-oracle-pool" class="ch.qos.logback.classic.db.DBAppender">  
+        <connectionSource class="ch.qos.logback.core.db.DataSourceConnectionSource">  
+            <dataSource class="org.apache.commons.dbcp.BasicDataSource">  
+                <driverClassName>oracle.jdbc.driver.OracleDriver</driverClassName>  
+                <url>jdbc:oracle:thin:@192.168.3.250:1521:devdb</url>  
+                <username>logback</username>  
+                <password>logback</password>  
+            </dataSource>  
+        </connectionSource>  
+    </appender>   -->
+    
+   	 <!-- 
+	   	 输出到数据库之前要建立三张表
+	    \logback-1.1.2\logback-1.1.2\logback-classic\src\main\java\ch\qos\logback\classic\db\script 
+    -->
+    
+    <appender name="db-classic-mysql-pool" class="ch.qos.logback.classic.db.DBAppender">  
+        <connectionSource class="ch.qos.logback.core.db.DataSourceConnectionSource">  
+            <dataSource class="org.apache.commons.dbcp.BasicDataSource">  
+                <driverClassName>com.mysql.jdbc.Driver</driverClassName>  
+                <url>jdbc:mysql://localhost:3306/test?characterEncoding=UTF-8</url>  
+                <username>root</username>  
+                <password>ok</password>  
+            </dataSource>  
+        </connectionSource>  
+    </appender>  
+    
+    <!-- vvvvvvvvvvvvvvvvvvvvvvvvvvvvv输出到数据库配置 vvvvvvvvvvvvvvvvvvvvvvvvvvvvv  -->
+    
+	<!-- 可以自由定义包下的 level 级别 -->
+	<logger name="log.logback" level="debug" />
+	
+	<!-- root logger，定义级别为debug--> <!-- Level 属性的值大小写无关，其值为下面其中一个字符串：TRACE、DEBUG、INFO、WARN、ERROR、ALL和 OFF。 -->
+	<root level="debug" >
+		<!--将名为 console 的appender添加到root logger下-->
+		<appender-ref ref="console"/>
+		
+		<!--将名为 file 的appender添加到root logger下-->
+		<!-- <appender-ref ref="file"/> -->
+		
+		<!-- <appender-ref ref="db-classic-mysql-pool"/> -->
+	</root>
+</configuration>
