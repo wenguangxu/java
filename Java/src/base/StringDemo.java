@@ -4,13 +4,17 @@ public class StringDemo {
 	//1、声明和创建
 	String a = new String();
 	String b = new String("123");
+	
 	//根据字符数组创建
 	char[] c = {1,2,3};
 	String d = new String(c);
+	
 	//根据字符数组的起始下标位置以及字符个数创建字符串
 	char[] e = {1,2,3,4,5};
 	String f = new String(e,2,2);
+	
 	//2、字符串基本操作
+	
 	//字符串连接( + 或concat())
 	String g = "1";
 	String h = "2";
@@ -34,9 +38,11 @@ public class StringDemo {
 	String u = "abcdefg";
 	int v = u.indexOf("c");
 	int w = u.indexOf("f",2);
+	
 	//取字符串的子串
 	String x = u.substring(3);
 	String y = u.substring(2,3);
+	
 	//替换字符串的某字符得到一个新字符串
 	String z = u.replace("b", "bb");
 	//去掉前后空格得到一个新字符串
@@ -65,4 +71,17 @@ public class StringDemo {
 	String ii = new String(jj);
 	String kk = new String(jj);
 	byte[] ll = kk.getBytes();
+	
+	//StringBuilder 比new String 效率更高
+	StringBuffer str = new StringBuffer();
+	public void testSB() {
+		str.append("a");
+		str.append("b");
+		System.out.println(str.toString());
+	}
+	
+	//格式化字符串
+	String name = "张三";
+	int age = 20;
+	String msg = String.format("Hello,%s.next year,you'll be %d", name,age);
 }
